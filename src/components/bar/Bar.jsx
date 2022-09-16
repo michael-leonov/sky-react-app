@@ -1,7 +1,7 @@
 import React from 'react'
 import BarElement from './BarElement'
 import TrackPlayContain from './track-play/TrackPlayContain'
-import sprite from './img/sprite.svg'
+import sprite from '../img/sprite.svg'
 import TrackPlayLike from './track-play/TrackPlayLike'
 
 function Bar() {

@@ -1,5 +1,5 @@
 import React from 'react'
-import likeIcon from './img/sprite.svg'
+import likeIcon from '../../../img/sprite.svg'
 
 function TrackTime({ time }) {
   return (

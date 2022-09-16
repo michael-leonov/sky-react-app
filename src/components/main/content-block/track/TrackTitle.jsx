@@ -1,5 +1,5 @@
 import React from 'react'
-import titleIcon from './img/sprite.svg'
+import titleIcon from '../../../img/sprite.svg'
 
 function TrackTitle({ title }) {
   return (

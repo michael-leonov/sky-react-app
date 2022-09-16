@@ -4,22 +4,23 @@ import Search from './content-block/Search'
 import FilterTrack from './content-block/FilterTrack'
 import TracksTitle from './content-block/TracksTitle'
 import Track from './content-block/Track'
-import watch from './img/sprite.svg'
+import watch from '../img/sprite.svg'
 
 function ContentBlock() {
-  // const [isLoading, setLoading] = useState(true)
+  const [isLoading, setLoading] = useState(true)
   const [tracks, setTracks] = useState([])
-  // useEffect(() => {
-  //   fetch('https://github.com/Stasy-cmd/music_proj')
-  //     .then((res) => res.json())
-  //     .then((json) => {
-  //       setTracks(json)
-  //     })
-  //     .catch((err) => {
-  //       console.log(err)
-  //     })
-  //     .finally(() => setLoading(false))
-  // }, [])
+
+  useEffect(() => {
+    fetch(`${window.baseUrl}catalog/track/all/`)
+      .then((res) => res.json())
+      .then((json) => {
+        setTracks(json.results)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+      .finally(() => setLoading(false))
+  }, [])
 
   return (
     <div className="main__centerblock centerblock">
@@ -46,7 +47,7 @@ function ContentBlock() {
         </div>
         <div className="content__playlist playlist">
           {tracks.map((obj) => (
-            <Track {...obj} />
+            <Track key={obj.id} {...obj} />
           ))}
         </div>
       </div>
