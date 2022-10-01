@@ -1,3 +1,5 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable array-callback-return */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useState, useEffect } from 'react'
 import Search from './content-block/Search'
@@ -5,6 +7,7 @@ import FilterTrack from './content-block/FilterTrack'
 import TracksTitle from './content-block/TracksTitle'
 import Track from './content-block/Track'
 import watch from '../img/sprite.svg'
+import SkeletonTrack from './content-block/SkeletonTrack'
 
 function ContentBlock() {
   const [isLoading, setLoading] = useState(true)
@@ -28,9 +31,24 @@ function ContentBlock() {
       <h2 className="centerblock__h2">Треки</h2>
       <div className="centerblock__filter filter">
         <div className="filter__title">Искать по:</div>
-        <FilterTrack name="author" filter="исполнителю" items={tracks.author} />
-        <FilterTrack name="year" filter="году выпуска" />
-        <FilterTrack name="genre" filter="жанру" />
+        <FilterTrack
+          name="author"
+          filter="исполнителю"
+          items={tracks}
+          filterName="author"
+        />
+        <FilterTrack
+          name="year"
+          filter="году выпуска"
+          items={tracks}
+          filterName="release_date"
+        />
+        <FilterTrack
+          name="genre"
+          filter="жанру"
+          items={tracks}
+          filterName="genre"
+        />
       </div>
       <div className="centerblock__content">
         <div className="content__title playlist-title">
@@ -45,11 +63,21 @@ function ContentBlock() {
             }
           />
         </div>
-        <div className="content__playlist playlist">
-          {tracks.map((obj) => (
-            <Track key={obj.id} {...obj} />
-          ))}
-        </div>
+        {isLoading ? (
+          <div className="content__playlist playlist skeleton-list">
+            <SkeletonTrack />
+            <SkeletonTrack />
+            <SkeletonTrack />
+            <SkeletonTrack />
+            <SkeletonTrack />
+          </div>
+        ) : (
+          <div className="content__playlist playlist">
+            {tracks.map((track) => (
+              <Track key={track.id} {...track} />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   )

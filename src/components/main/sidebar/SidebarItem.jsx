@@ -1,10 +1,10 @@
 import React from 'react'
 
-function SidebarItem({ src, alt, href }) {
+function SidebarItem({ imgName, alt, href }) {
   return (
     <div className="sidebar__item">
       <a className="sidebar__link" href={href}>
-        <img className="sidebar__img" src={src} alt={alt} />
+        <img className="sidebar__img" src={`../sidebar/img/${imgName}`} alt={alt} />
       </a>
     </div>
   )
