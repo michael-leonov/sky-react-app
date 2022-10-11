@@ -9,15 +9,15 @@ function SideBar() {
       <div className="sidebar__block">
         <div className="sidebar__list">
           <SidebarItem
-            src="./sidebar/img/playlist01.png"
+            imgName="playlist01.png"
             alt="day's playlist"
           />
           <SidebarItem
-            src="./sidebar/img/playlist02.png"
+            imgName="playlist02.png"
             alt="day's playlist"
           />
           <SidebarItem
-            src="./sidebar/img/playlist03.png"
+            imgName="playlist03.png"
             alt="day's playlist"
           />
         </div>

@@ -1,6 +1,6 @@
 import React from 'react'
 import TrackPlayElement from './TrackPlayElement'
-import sprite from '../img/sprite.svg'
+import sprite from '../../img/sprite.svg'
 
 function TrackPlayLike() {
   return (

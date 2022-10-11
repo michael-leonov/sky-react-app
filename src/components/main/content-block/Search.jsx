@@ -1,5 +1,5 @@
 import React from 'react'
-import search from '../img/sprite.svg'
+import search from '../../img/sprite.svg'
 
 function Search() {
   return (
