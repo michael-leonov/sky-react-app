@@ -1,29 +1,29 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+// * {
+//   margin: 0;
+//   padding: 0;
+//   box-sizing: border-box;
+// }
 
-*:before,
-*:after {
-  box-sizing: border-box;
-}
+// *:before,
+// *:after {
+//   box-sizing: border-box;
+// }
 
-a,
-a:visited {
-  text-decoration: none;
-  font-family: 'StratosSkyeng', sans-serif;
-  cursor: pointer;
-}
+// a,
+// a:visited {
+//   text-decoration: none;
+//   font-family: 'Stratos', sans-serif;
+//   cursor: pointer;
+// }
 
-button,
-._btn {
-  cursor: pointer;
-}
+// button,
+// ._btn {
+//   cursor: pointer;
+// }
 
-ul li {
-  list-style: none;
-}
+// ul li {
+//   list-style: none;
+// }
 
 //-------------------------------//
 
@@ -38,30 +38,219 @@ ul li {
 //   font-style: normal;
 // }
 
+// @font-face {
+//   font-family: 'Stratos';
+//   src: url('Stratos-Black.woff2') format('woff2'),
+//       url('Stratos-Black.woff') format('woff');
+//   font-weight: 900;
+//   font-style: normal;
+//   font-display: swap;
+// }
+
+// @font-face {
+//   font-family: 'Stratos';
+//   src: url('Stratos-Black.woff2') format('woff2'),
+//       url('Stratos-Black.woff') format('woff');
+//   font-weight: 900;
+//   font-style: normal;
+//   font-display: swap;
+// }
+
+// @font-face {
+//   font-family: 'Stratos';
+//   src: url('Stratos-Bold.woff2') format('woff2'),
+//       url('Stratos-Bold.woff') format('woff');
+//   font-weight: bold;
+//   font-style: normal;
+//   font-display: swap;
+// }
+
+// @font-face {
+//   font-family: 'Stratos';
+//   src: url('Stratos-BlackItalic.woff2') format('woff2'),
+//       url('Stratos-BlackItalic.woff') format('woff');
+//   font-weight: 900;
+//   font-style: italic;
+//   font-display: swap;
+// }
+
+// @font-face {
+//   font-family: 'Stratos';
+//   src: url('Stratos-BoldItalic.woff2') format('woff2'),
+//       url('Stratos-BoldItalic.woff') format('woff');
+//   font-weight: bold;
+//   font-style: italic;
+//   font-display: swap;
+// }
+
+// @font-face {
+//   font-family: 'Stratos';
+//   src: url('Stratos-ExtraBold.woff2') format('woff2'),
+//       url('Stratos-ExtraBold.woff') format('woff');
+//   font-weight: bold;
+//   font-style: normal;
+//   font-display: swap;
+// }
+
+// @font-face {
+//   font-family: 'Stratos';
+//   src: url('Stratos-ExtraBoldItalic.woff2') format('woff2'),
+//       url('Stratos-ExtraBoldItalic.woff') format('woff');
+//   font-weight: bold;
+//   font-style: italic;
+//   font-display: swap;
+// }
+
+// @font-face {
+//   font-family: 'Stratos';
+//   src: url('Stratos-ExtraLight.woff2') format('woff2'),
+//       url('Stratos-ExtraLight.woff') format('woff');
+//   font-weight: 200;
+//   font-style: normal;
+//   font-display: swap;
+// }
+
+// @font-face {
+//   font-family: 'Stratos';
+//   src: url('Stratos-ExtraLightItalic.woff2') format('woff2'),
+//       url('Stratos-ExtraLightItalic.woff') format('woff');
+//   font-weight: 200;
+//   font-style: italic;
+//   font-display: swap;
+// }
+
+// @font-face {
+//   font-family: 'Stratos';
+//   src: url('Stratos-Light.woff2') format('woff2'),
+//       url('Stratos-Light.woff') format('woff');
+//   font-weight: 300;
+//   font-style: normal;
+//   font-display: swap;
+// }
+
+// @font-face {
+//   font-family: 'Stratos';
+//   src: url('Stratos-Italic.woff2') format('woff2'),
+//       url('Stratos-Italic.woff') format('woff');
+//   font-weight: normal;
+//   font-style: italic;
+//   font-display: swap;
+// }
+
+// @font-face {
+//   font-family: 'Stratos';
+//   src: url('Stratos-LightItalic.woff2') format('woff2'),
+//       url('Stratos-LightItalic.woff') format('woff');
+//   font-weight: 300;
+//   font-style: italic;
+//   font-display: swap;
+// }
+
+// @font-face {
+//   font-family: 'Stratos';
+//   src: url('Stratos-Medium.woff2') format('woff2'),
+//       url('Stratos-Medium.woff') format('woff');
+//   font-weight: 500;
+//   font-style: normal;
+//   font-display: swap;
+// }
+
+// @font-face {
+//   font-family: 'Stratos';
+//   src: url('Stratos-MediumItalic.woff2') format('woff2'),
+//       url('Stratos-MediumItalic.woff') format('woff');
+//   font-weight: 500;
+//   font-style: italic;
+//   font-display: swap;
+// }
+
+// @font-face {
+//   font-family: 'Stratos';
+//   src: url('../fonts/Stratos-Regular.woff2') format('woff2'),
+//     url('../fonts/Stratos-Regular.woff') format('woff');
+//   font-weight: normal;
+//   font-style: normal;
+//   font-display: swap;
+// }
+
+// @font-face {
+//   font-family: 'Stratos';
+//   src: url('Stratos-SemiBold.woff2') format('woff2'),
+//       url('Stratos-SemiBold.woff') format('woff');
+//   font-weight: 600;
+//   font-style: normal;
+//   font-display: swap;
+// }
+
+// @font-face {
+//   font-family: 'Stratos';
+//   src: url('Stratos-SemiBoldItalic.woff2') format('woff2'),
+//       url('Stratos-SemiBoldItalic.woff') format('woff');
+//   font-weight: 600;
+//   font-style: italic;
+//   font-display: swap;
+// }
+
+// @font-face {
+//   font-family: 'Stratos SemiLight';
+//   src: url('Stratos-SemiLight.woff2') format('woff2'),
+//       url('Stratos-SemiLight.woff') format('woff');
+//   font-weight: 300;
+//   font-style: normal;
+//   font-display: swap;
+// }
+
+// @font-face {
+//   font-family: 'Stratos';
+//   src: url('Stratos-Thin.woff2') format('woff2'),
+//       url('Stratos-Thin.woff') format('woff');
+//   font-weight: 100;
+//   font-style: normal;
+//   font-display: swap;
+// }
+
+// @font-face {
+//   font-family: 'Stratos';
+//   src: url('Stratos-ThinItalic.woff2') format('woff2'),
+//       url('Stratos-ThinItalic.woff') format('woff');
+//   font-weight: 100;
+//   font-style: italic;
+//   font-display: swap;
+// }
+
+// @font-face {
+//   font-family: 'Stratos SemiLight';
+//   src: url('Stratos-SemiLightItalic.woff2') format('woff2'),
+//       url('Stratos-SemiLightItalic.woff') format('woff');
+//   font-weight: 300;
+//   font-style: italic;
+//   font-display: swap;
+// }
+
 //--------------------------
 
-html,
-body {
-  width: 100%;
-  height: 100%;
-  font-family: 'StratosSkyeng', sans-serif;
-  color: #ffffff;
-}
+// html,
+// body {
+//   width: 100%;
+//   height: 100%;
+//   font-family: 'Stratos', sans-serif;
+//   color: #ffffff;
+// }
 
-.wrapper {
-  width: 100%;
-  min-height: 100%;
-  overflow: hidden;
-  background-color: #383838;
-}
+// .wrapper {
+// width: 100%;
+// min-height: 100%;
+// overflow: hidden;
+// background-color: #383838;
+// }
 
-.container {
-  max-width: 1920px;
-  height: 100vh;
-  margin: 0 auto;
-  position: relative;
-  background-color: #181818;
-}
+// .container {
+// max-width: 1920px;
+// height: 100vh;
+// margin: 0 auto;
+// position: relative;
+// background-color: #181818;
+// }
 
 // ========== hover ========
 ._btn-text:hover {
@@ -99,16 +288,16 @@ body {
 
 // =================== main ====================//
 .main {
-  flex: 1 1 auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  // flex: 1 1 auto;
+  // display: flex;
+  // flex-wrap: wrap;
+  // justify-content: space-between;
 
-  &__nav {
-    width: 244px;
-    background-color: #181818;
-    padding: 20px 0 20px 36px;
-  }
+  // &__nav {
+  //   width: 244px;
+  //   background-color: #181818;
+  //   padding: 20px 0 20px 36px;
+  // }
 
   &__centerblock {
     width: auto;
@@ -123,19 +312,19 @@ body {
 }
 
 .nav {
-  &__logo {
-    width: 113.33px;
-    height: 43px;
-    padding: 13px 0 13px 0;
-    background-color: transparent;
-    margin-bottom: 20px;
-  }
+  // &__logo {
+  //   width: 113.33px;
+  //   height: 43px;
+  //   padding: 13px 0 13px 0;
+  //   background-color: transparent;
+  //   margin-bottom: 20px;
+  // }
 
   &__burger {
-    width: 20px;
-    height: 36px;
-    padding: 13px 0;
-    cursor: pointer;
+    // width: 20px;
+    // height: 36px;
+    // padding: 13px 0;
+    // cursor: pointer;
 
     &.show {
       .burger__line {
@@ -158,10 +347,10 @@ body {
     }
   }
 
-  &__menu {
-    display: block;
-    visibility: visible;
-  }
+  // &__menu {
+  //   display: block;
+  //   visibility: visible;
+  // }
 }
 
 .logo {
@@ -173,50 +362,50 @@ body {
 }
 
 .burger {
-  position: relative;
-  &__line {
-    position: absolute;
-    display: inline-block;
-    width: 100%;
-    height: 1px;
-    background-color: #d3d3d3;
-    transform: translate(-50%, -50%);
-    top: 50%;
-    left: 50%;
+  // position: relative;
+  // &__line {
+  //   // position: absolute;
+  //   // display: inline-block;
+  //   // width: 100%;
+  //   // height: 1px;
+  //   // background-color: #d3d3d3;
+  //   // transform: translate(-50%, -50%);
+  //   // top: 50%;
+  //   // left: 50%;
 
-    &::before,
-    &::after {
-      position: absolute;
-      background-color: #d3d3d3;
-      width: 100%;
-      height: 1px;
-      content: '';
-      left: 0;
-    }
+  //   // &::before,
+  //   // &::after {
+  //   //   position: absolute;
+  //   //   background-color: #d3d3d3;
+  //   //   width: 100%;
+  //   //   height: 1px;
+  //   //   content: '';
+  //   //   left: 0;
+  //   // }
 
-    &::before {
-      top: -6px;
-    }
+  //   // &::before {
+  //   //   top: -6px;
+  //   // }
 
-    &::after {
-      top: 6px;
-    }
-  }
+  //   // &::after {
+  //   //   top: 6px;
+  //   // }
+  // }
 }
 
 .menu {
-  &__list {
-    padding: 18px 0 10px 0;
-  }
+  // &__list {
+  //   padding: 18px 0 10px 0;
+  // }
 
-  &__item {
-    padding: 5px 0;
-    margin-bottom: 16px;
+  // &__item {
+  //   // padding: 5px 0;
+  //   // margin-bottom: 16px;
 
-    a {
-      color: #fff;
-    }
-  }
+  //   // a {
+  //   //   color: #fff;
+  //   // }
+  // }
 
   &__link {
     color: #ffffff;

@@ -1,10 +1,11 @@
 import React from 'react'
+import * as Styled from './styles'
 
 function NavLink({ name, href }) {
   return (
-    <li className="menu__item">
-      <a href={href}>{name}</a>
-    </li>
+    <Styled.MenuItem>
+      <Styled.MenuItemLink href={href}>{name}</Styled.MenuItemLink>
+    </Styled.MenuItem>
   )
 }
 

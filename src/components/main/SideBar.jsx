@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 import React from 'react'
 import Personal from './sidebar/Personal'
 import SidebarItem from './sidebar/SidebarItem'
@@ -9,15 +10,15 @@ function SideBar() {
       <div className="sidebar__block">
         <div className="sidebar__list">
           <SidebarItem
-            imgName="playlist01.png"
+            imgPath={require('./sidebar/img/playlist01.png')}
             alt="day's playlist"
           />
           <SidebarItem
-            imgName="playlist02.png"
+            imgPath={require('./sidebar/img/playlist02.png')}
             alt="day's playlist"
           />
           <SidebarItem
-            imgName="playlist03.png"
+            imgPath={require('./sidebar/img/playlist03.png')}
             alt="day's playlist"
           />
         </div>
