@@ -1,22 +1,21 @@
 import React from 'react'
 import likeIcon from '../../../img/sprite.svg'
+import * as Styled from './styles/track-time-styles'
 
 function TrackTime({ time }) {
+  const min = Math.floor(time / 60)
+  const secs = time % 60
 
-  const min = Math.floor(time / 60);
-  const secs = time % 60;
-
-  const formatedTime = [
-    min.toString(),
-    secs.toString().padStart(2, '0')
-  ].join(':')
+  const formatedTime = [min.toString(), secs.toString().padStart(2, '0')].join(
+    ':'
+  )
 
   return (
-    <div className="track__time">
-      <svg className="track__time-svg" alt="time">
+    <div>
+      <Styled.TrackTimeImg alt="time">
         <use xlinkHref={`${likeIcon}#icon-like`} />
-      </svg>
-      <span className="track__time-text">{formatedTime}</span>
+      </Styled.TrackTimeImg>
+      <Styled.TrackTimeText>{formatedTime}</Styled.TrackTimeText>
     </div>
   )
 }

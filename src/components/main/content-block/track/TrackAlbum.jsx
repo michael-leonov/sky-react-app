@@ -1,12 +1,11 @@
 import React from 'react'
+import * as Styled from './styles/track-album-styles'
 
 function TrackAlbum({ album }) {
   return (
-    <div className="track__album">
-      <a className="track__album-link" href="http://">
-        {album}
-      </a>
-    </div>
+    <Styled.TrackAlbumWrapper>
+      <Styled.TrackAlbumLink href="http://">{album}</Styled.TrackAlbumLink>
+    </Styled.TrackAlbumWrapper>
   )
 }
 

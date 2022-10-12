@@ -2,13 +2,14 @@
 import React from 'react'
 import Personal from './sidebar/Personal'
 import SidebarItem from './sidebar/SidebarItem'
+import * as Styled from './styles/side-bar-styles'
 
 function SideBar() {
   return (
-    <div className="main__sidebar sidebar">
+    <Styled.SideBarWrapper>
       <Personal />
-      <div className="sidebar__block">
-        <div className="sidebar__list">
+      <Styled.SideBarBlock>
+        <Styled.SideBarList>
           <SidebarItem
             imgPath={require('./sidebar/img/playlist01.png')}
             alt="day's playlist"
@@ -21,9 +22,9 @@ function SideBar() {
             imgPath={require('./sidebar/img/playlist03.png')}
             alt="day's playlist"
           />
-        </div>
-      </div>
-    </div>
+        </Styled.SideBarList>
+      </Styled.SideBarBlock>
+    </Styled.SideBarWrapper>
   )
 }
 

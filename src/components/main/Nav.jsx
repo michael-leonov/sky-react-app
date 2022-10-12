@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import logo from '../img/logo.png'
 import NavLink from './nav/NavLink'
-import * as Styled from './nav-styles'
+import * as Styled from './styles/nav-styles'
 
 function Nav() {
   const [visible, setVisible] = useState(false)

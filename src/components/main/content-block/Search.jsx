@@ -1,19 +1,15 @@
 import React from 'react'
 import search from '../../img/sprite.svg'
+import * as Styled from './styles/search-styles'
 
 function Search() {
   return (
-    <div className="centerblock__search search">
-      <svg className="search__svg">
+    <Styled.SearchWrapper className="search">
+      <Styled.SearchIcon>
         <use xlinkHref={`${search}#icon-search`} />
-      </svg>
-      <input
-        className="search__text"
-        type="search"
-        placeholder="Поиск"
-        name="search"
-      />
-    </div>
+      </Styled.SearchIcon>
+      <Styled.SearchInput type="search" placeholder="Поиск" name="search" />
+    </Styled.SearchWrapper>
   )
 }
 

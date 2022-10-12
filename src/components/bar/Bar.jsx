@@ -3,26 +3,27 @@ import BarElement from './BarElement'
 import TrackPlayContain from './track-play/TrackPlayContain'
 import sprite from '../img/sprite.svg'
 import TrackPlayLike from './track-play/TrackPlayLike'
+import * as Styled from './styles/bar-styles'
 
 function Bar() {
   return (
-    <div className="bar">
-      <div className="bar__content">
-        <div className="bar__player-progress" />
-        <div className="bar__player-block">
-          <div className="bar__player player">
-            <div className="player__controls">
+    <Styled.BarWrapper className="bar">
+      <Styled.BarContent>
+        <Styled.ProgressBar />
+        <Styled.BarPlayerBlock>
+          <Styled.BarPlayer className="player">
+            <Styled.BarControls>
               <BarElement el="prev" alt="prev" />
               <BarElement el="play" alt="play" />
               <BarElement el="next" alt="next" />
               <BarElement el="repeat" alt="repeat" />
               <BarElement el="shuffle" alt="shuffle" />
-            </div>
-            <div className="player__track-play track-play">
+            </Styled.BarControls>
+            <Styled.TrackPlay className="track-play">
               <TrackPlayContain />
               <TrackPlayLike />
-            </div>
-          </div>
+            </Styled.TrackPlay>
+          </Styled.BarPlayer>
           <div className="bar__volume-block volume">
             <div className="volume__content">
               <div className="volume__image">
@@ -39,9 +40,9 @@ function Bar() {
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
+        </Styled.BarPlayerBlock>
+      </Styled.BarContent>
+    </Styled.BarWrapper>
   )
 }
 

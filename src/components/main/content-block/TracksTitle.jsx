@@ -1,7 +1,8 @@
 import React from 'react'
+import { StyledTracksHeaders } from './styles/track-styles'
 
-function TracksTitle({ title, index }) {
-  return <div className={`playlist-title__col col0${index}`}>{title}</div>
+function TracksTitle({ title }) {
+  return <StyledTracksHeaders>{title}</StyledTracksHeaders>
 }
 
 export default TracksTitle

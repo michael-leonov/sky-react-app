@@ -1,12 +1,13 @@
 import React from 'react'
+import * as Styled from './styles/side-bar-item-styles'
 
 function SidebarItem({ imgPath, alt, href }) {
   return (
-    <div className="sidebar__item">
-      <a className="sidebar__link" href={href}>
-        <img className="sidebar__img" src={imgPath} alt={alt} />
-      </a>
-    </div>
+    <Styled.SideBarItem>
+      <Styled.SideBarLink href={href}>
+        <Styled.SideBarImg src={imgPath} alt={alt} />
+      </Styled.SideBarLink>
+    </Styled.SideBarItem>
   )
 }
 
