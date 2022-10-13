@@ -1,10 +1,11 @@
 import React from 'react'
 import TrackPlayElement from './TrackPlayElement'
 import sprite from '../../img/sprite.svg'
+import * as Styled from './styles/track-play-styles'
 
 function TrackPlayContain() {
   return (
-    <div className="track-play__contain">
+    <Styled.TrackPlayInfo>
       <TrackPlayElement
         el="image"
         tag={
@@ -29,7 +30,7 @@ function TrackPlayContain() {
           </a>
         }
       />
-    </div>
+    </Styled.TrackPlayInfo>
   )
 }
 

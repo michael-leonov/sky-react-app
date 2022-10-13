@@ -38,3 +38,36 @@ export const TrackPlay = styled.div`
   display: flex;
   flex-direction: row;
 `
+
+export const BarVolumeBlock = styled.div`
+  width: auto;
+  display: flex;
+  align-items: center;
+  padding: 0 92px 0 0;
+`
+
+export const VolumeWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: end;
+`
+
+export const VolumeImageWrapper = styled.div`
+  width: 13px;
+  height: 18px;
+  margin-right: 17px;
+`
+export const VolumeImage = styled.svg`
+  width: 13px;
+  height: 18px;
+  fill: transparent;
+`
+export const VolumeProgressBar = styled.svg`
+  width: 109px;
+  cursor: pointer;
+`
+export const VolumeProgressBarInput = styled.svg`
+  width: 109px;
+  cursor: pointer;
+`

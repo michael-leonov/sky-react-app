@@ -7,7 +7,7 @@ import * as Styled from './styles/bar-styles'
 
 function Bar() {
   return (
-    <Styled.BarWrapper className="bar">
+    <Styled.BarWrapper>
       <Styled.BarContent>
         <Styled.ProgressBar />
         <Styled.BarPlayerBlock>
@@ -24,22 +24,18 @@ function Bar() {
               <TrackPlayLike />
             </Styled.TrackPlay>
           </Styled.BarPlayer>
-          <div className="bar__volume-block volume">
-            <div className="volume__content">
-              <div className="volume__image">
-                <svg className="volume__svg" alt="volume">
+          <Styled.BarVolumeBlock className="volume">
+            <Styled.VolumeWrapper>
+              <Styled.VolumeImageWrapper>
+                <Styled.VolumeImage alt="volume">
                   <use xlinkHref={`${sprite}#icon-dislike`} />
-                </svg>
-              </div>
-              <div className="volume__progress _btn">
-                <input
-                  className="volume__progress-line _btn"
-                  type="range"
-                  name="range"
-                />
-              </div>
-            </div>
-          </div>
+                </Styled.VolumeImage>
+              </Styled.VolumeImageWrapper>
+              <Styled.VolumeProgressBar>
+                <Styled.VolumeProgressBarInput type="range" name="range" />
+              </Styled.VolumeProgressBar>
+            </Styled.VolumeWrapper>
+          </Styled.BarVolumeBlock>
         </Styled.BarPlayerBlock>
       </Styled.BarContent>
     </Styled.BarWrapper>

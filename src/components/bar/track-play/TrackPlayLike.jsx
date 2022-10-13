@@ -1,10 +1,11 @@
 import React from 'react'
 import TrackPlayElement from './TrackPlayElement'
 import sprite from '../../img/sprite.svg'
+import * as Styled from './styles/track-play-styles'
 
 function TrackPlayLike() {
   return (
-    <div className="track-play__like-dis">
+    <Styled.TrackPlayLikeDislike>
       <TrackPlayElement
         el="like"
         tag={
@@ -21,7 +22,7 @@ function TrackPlayLike() {
           </svg>
         }
       />
-    </div>
+    </Styled.TrackPlayLikeDislike>
   )
 }
 
