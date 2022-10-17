@@ -13,6 +13,13 @@ export const LogoWrapper = styled.div`
   background-color: transparent;
   margin-bottom: 20px;
 `
+
+export const Logo = styled.img`
+  width: 113.33px;
+  height: 17px;
+  color: #181818;
+`
+
 export const Burger = styled.div`
   width: 20px;
   height: 36px;
@@ -26,10 +33,12 @@ export const BurgerLines = styled.span`
   display: inline-block;
   width: 100%;
   height: 1px;
-  background-color: #d3d3d3;
+  background: ${(active) => (active ? '#d3d3d3' : 'transparent')};
   transform: translate(-50%, -50%);
   top: 50%;
   left: 50%;
+  right: ${(active) => (active ? 'calc(50% + 30px) ' : 'inherit')};
+  transition: ${(active) => (active ? 'all 0.2s ease-in-out' : 'inherit')};
 
   ::before,
   ::after {
@@ -42,11 +51,15 @@ export const BurgerLines = styled.span`
   }
 
   ::before {
-    top: -6px;
+    top: ${(active) => (active ? '-6px' : '0')};
+    transform: ${({ active }) => (active ? 'rotate(45deg)' : 'rotate(0)')};
+    transition: ${(active) => (active ? 'all 0.3s ease-in-out' : 'inherit')};
   }
 
   ::after {
-    top: 6px;
+    top: ${(active) => (active ? '6px' : '0')};
+    transform: ${({ active }) => (active ? 'rotate(-45deg)' : 'rotate(0)')};
+    transition: ${(active) => (active ? 'all 0.3s ease-in-out' : 'inherit')};
   }
 `
 

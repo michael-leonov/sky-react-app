@@ -71,3 +71,16 @@ export const VolumeProgressBarInput = styled.svg`
   width: 109px;
   cursor: pointer;
 `
+export const StyledBarBtn = styled.div`
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  margin-right: ${(props) => props.marginRight};
+  fill: ${(props) => props.fill};
+`
+export const StyledBarBtnSvg = styled.svg`
+  width: ${(props) => props.widthSvg};
+  height: ${(props) => props.heightSvg};
+  fill: ${(props) => props.fillSvg};
+  stroke: ${(props) => props.strokeSvg};
+`

@@ -7,25 +7,52 @@ function TrackPlayContain() {
   return (
     <Styled.TrackPlayInfo>
       <TrackPlayElement
-        el="image"
+        width="51px"
+        height="51px"
+        backgroundColor="#313131"
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        marginRight="12px"
+        gridArea="image"
         tag={
-          <svg className="track-play__svg" alt="music">
+          <svg
+            width="18px"
+            height="17px"
+            fill="transparent"
+            stroke="#4e4e4e"
+            alt="music"
+          >
             <use xlinkHref={`${sprite}#icon-note`} />
           </svg>
         }
       />
       <TrackPlayElement
-        el="author"
+        gridArea="author"
+        minWidth="49px"
         tag={
-          <a className="track-play__author-link" href="http://">
+          <a
+            fontStyle="normal"
+            fontWeight="400"
+            fontSize="16px"
+            color="white"
+            href="http://"
+          >
             {}
           </a>
         }
       />
       <TrackPlayElement
-        el="album"
+        gridArea="album"
+        minWidth="49px"
         tag={
-          <a className="track-play__album-link" href="http://">
+          <a
+            fontStyle="normal"
+            fontWeight="400"
+            fontSize="13px"
+            color="white"
+            href="http://"
+          >
             {}
           </a>
         }

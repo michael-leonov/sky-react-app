@@ -10,47 +10,19 @@ function FilterTrack({ filter, items, filterName }) {
   function chosenFilter() {
     setActive(!active)
     if (filterName === 'author') {
-      setFilter(
-        items
-          .map((item) => item.author)
-          .reduce(
-            (result, item) =>
-              result.includes(item) ? result : [...result, item],
-            []
-          )
-      )
+      setFilter([...new Set(items.map((item) => item.author))])
     } else if (filterName === 'genre') {
-      setFilter(
-        items
-          .map((item) => item.genre)
-          .reduce(
-            (result, item) =>
-              result.includes(item) ? result : [...result, item],
-            []
-          )
-      )
+      setFilter([...new Set(items.map((item) => item.genre))])
     } else if (filterName === 'release_date') {
-      setFilter(
-        items
-          .map((item) => item.release_date)
-          .reduce(
-            (result, item) =>
-              result.includes(item) ? result : [...result, item],
-            []
-          )
-      )
+      setFilter([...new Set(items.map((item) => item.release_date))])
     }
   }
 
   return (
-    <Styled.FilterWrapper className="filter__wrapper">
-      {/* how add class on clicked btn */}
-      <div
-        className={`filter__button  _btn-text ${active ? 'active' : ''}`}
-        onClick={() => chosenFilter()}
-      >
+    <Styled.FilterWrapper>
+      <Styled.FilterBtn onClick={() => chosenFilter()}>
         {filter}
-      </div>
+      </Styled.FilterBtn>
       {active && (
         <Styled.FilterModal>
           <Styled.FilterModalList>

@@ -4,7 +4,7 @@ import * as Styled from './styles/search-styles'
 
 function Search() {
   return (
-    <Styled.SearchWrapper className="search">
+    <Styled.SearchWrapper>
       <Styled.SearchIcon>
         <use xlinkHref={`${search}#icon-search`} />
       </Styled.SearchIcon>

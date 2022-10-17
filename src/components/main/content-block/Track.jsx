@@ -9,7 +9,7 @@ import * as Styled from './styles/track-styles'
 function Track({ name, author, duration_in_seconds, album }) {
   return (
     <Styled.TrackItem>
-      <Styled.TrackWrapper className="track">
+      <Styled.TrackWrapper>
         <TrackTitle title={name} />
         <TrackAuthor author={author} />
         <TrackAlbum album={album} />

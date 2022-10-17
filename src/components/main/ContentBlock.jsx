@@ -43,7 +43,7 @@ function ContentBlock() {
         <FilterTrack filter="жанру" items={tracks} filterName="genre" />
       </Styled.FilterBlock>
       <Styled.CenterBlockContent>
-        <Styled.ContentTitles className="content__title playlist-title">
+        <Styled.ContentTitles>
           <TracksTitle title="Трек" />
           <TracksTitle title="Исполнитель" />
           <TracksTitle title="Альбом" />
@@ -57,14 +57,10 @@ function ContentBlock() {
         </Styled.ContentTitles>
         {isLoading ? (
           <Styled.SkeletonWrapper>
-            <SkeletonTrack />
-            <SkeletonTrack />
-            <SkeletonTrack />
-            <SkeletonTrack />
-            <SkeletonTrack />
+            {Array.from({ length: 5 }).fill(<SkeletonTrack />)}
           </Styled.SkeletonWrapper>
         ) : (
-          <Styled.Playlist className="playlist">
+          <Styled.Playlist>
             {tracks.map((track) => (
               <Track key={track.id} {...track} />
             ))}

@@ -7,17 +7,30 @@ function TrackPlayLike() {
   return (
     <Styled.TrackPlayLikeDislike>
       <TrackPlayElement
-        el="like"
+        padding="5px"
         tag={
-          <svg className="track-play__like-svg" alt="like">
+          <svg
+            width="14px"
+            height="12px"
+            fill="transparent"
+            stroke="#696969"
+            alt="like"
+          >
             <use xlinkHref={`${sprite}#icon-like`} />
           </svg>
         }
       />
       <TrackPlayElement
-        el="dislike"
+        padding="5px"
+        marginLeft="28.5px"
         tag={
-          <svg className="track-play__dislike-svg" alt="dislike">
+          <svg
+            width="14.34px"
+            height="13px"
+            fill="transparent"
+            stroke="#696969"
+            alt="dislike"
+          >
             <use xlinkHref={`${sprite}#icon-dislike`} />
           </svg>
         }

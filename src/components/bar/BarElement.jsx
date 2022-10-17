@@ -1,14 +1,29 @@
 import React from 'react'
 import sprite from '../img/sprite.svg'
+import { StyledBarBtn, StyledBarBtnSvg } from './styles/bar-styles'
 
-function BarElement({ el, alt }) {
+function BarElement({
+  el,
+  alt,
+  marginRight,
+  fill,
+  widthSvg,
+  heightSvg,
+  fillSvg,
+  strokeSvg,
+}) {
   return (
-    // how add styles
-    <div className={`player__btn-${el}`}>
-      <svg className={`player__btn-${el}-svg`} alt={alt}>
+    <StyledBarBtn marginRight={marginRight} fill={fill}>
+      <StyledBarBtnSvg
+        width={widthSvg}
+        height={heightSvg}
+        fill={fillSvg}
+        stroke={strokeSvg}
+        alt={alt}
+      >
         <use xlinkHref={`${sprite}#icon-${el}`} />
-      </svg>
-    </div>
+      </StyledBarBtnSvg>
+    </StyledBarBtn>
   )
 }
 

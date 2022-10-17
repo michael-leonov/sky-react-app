@@ -11,14 +11,10 @@ function Nav() {
   return (
     <Styled.NavWrapper>
       <Styled.LogoWrapper>
-        <img src={logo} alt="Logo" />
+        <Styled.Logo src={logo} alt="Logo" />
       </Styled.LogoWrapper>
-      {/* how add class on clicked burger */}
-      <Styled.Burger
-        className={`nav__burger burger ${visible ? 'show' : ''}`}
-        onClick={() => setVisible(!visible)}
-      >
-        <Styled.BurgerLines />
+      <Styled.Burger onClick={() => setVisible(!visible)}>
+        <Styled.BurgerLines active={visible} />
       </Styled.Burger>
       {visible && (
         <Styled.NavMenuWrapper>

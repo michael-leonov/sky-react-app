@@ -6,4 +6,7 @@ export const MenuItem = styled.li`
 `
 export const MenuItemLink = styled.a`
   color: #fff;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
 `
