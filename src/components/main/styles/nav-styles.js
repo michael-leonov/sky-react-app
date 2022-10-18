@@ -33,12 +33,12 @@ export const BurgerLines = styled.span`
   display: inline-block;
   width: 100%;
   height: 1px;
-  background: ${(active) => (active ? '#d3d3d3' : 'transparent')};
+  background: ${({ active }) => (active ? 'transparent' : '#d3d3d3')};
   transform: translate(-50%, -50%);
   top: 50%;
   left: 50%;
-  right: ${(active) => (active ? 'calc(50% + 30px) ' : 'inherit')};
-  transition: ${(active) => (active ? 'all 0.2s ease-in-out' : 'inherit')};
+  right: ${({ active }) => (active ? 'calc(50% + 30px) ' : 'inherit')};
+  transition: ${({ active }) => (active ? 'all 0.2s ease-in-out' : 'inherit')};
 
   ::before,
   ::after {
@@ -51,15 +51,17 @@ export const BurgerLines = styled.span`
   }
 
   ::before {
-    top: ${(active) => (active ? '-6px' : '0')};
+    top: ${({ active }) => (active ? '0' : '-6px')};
     transform: ${({ active }) => (active ? 'rotate(45deg)' : 'rotate(0)')};
-    transition: ${(active) => (active ? 'all 0.3s ease-in-out' : 'inherit')};
+    transition: ${({ active }) =>
+      active ? 'all 0.3s ease-in-out' : 'inherit'};
   }
 
   ::after {
-    top: ${(active) => (active ? '6px' : '0')};
+    top: ${({ active }) => (active ? '0' : '6px')};
     transform: ${({ active }) => (active ? 'rotate(-45deg)' : 'rotate(0)')};
-    transition: ${(active) => (active ? 'all 0.3s ease-in-out' : 'inherit')};
+    transition: ${({ active }) =>
+      active ? 'all 0.3s ease-in-out' : 'inherit'};
   }
 `
 
