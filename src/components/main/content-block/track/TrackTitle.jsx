@@ -1,20 +1,21 @@
 import React from 'react'
 import titleIcon from '../../../img/sprite.svg'
+import * as Styled from './styles/track-title-styles'
 
 function TrackTitle({ title }) {
   return (
-    <div className="track__title">
-      <div className="track__title-image">
-        <svg className="track__title-svg" alt="music">
+    <Styled.TrackTitleWrapper>
+      <Styled.TrackTitleImgWrapper>
+        <Styled.TrackTitleImg alt="music">
           <use xlinkHref={`${titleIcon}#icon-note`} />
-        </svg>
-      </div>
+        </Styled.TrackTitleImg>
+      </Styled.TrackTitleImgWrapper>
       <div className="track__title-text">
-        <a className="track__title-link" href="http://">
-          {title} <span className="track__title-span" />
-        </a>
+        <Styled.TrackTitleLink href="http://">
+          {title} <Styled.TrackTitleLinkSpan />
+        </Styled.TrackTitleLink>
       </div>
-    </div>
+    </Styled.TrackTitleWrapper>
   )
 }
 

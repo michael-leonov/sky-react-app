@@ -3,31 +3,29 @@
 import React, { useState } from 'react'
 import logo from '../img/logo.png'
 import NavLink from './nav/NavLink'
+import * as Styled from './styles/nav-styles'
 
 function Nav() {
   const [visible, setVisible] = useState(false)
 
   return (
-    <div className="main__nav nav">
-      <div className="nav__logo logo">
-        <img src={logo} alt="Logo" />
-      </div>
-      <div
-        className={`nav__burger burger ${visible ? 'show' : ''}`}
-        onClick={() => setVisible(!visible)}
-      >
-        <span className="burger__line" />
-      </div>
+    <Styled.NavWrapper>
+      <Styled.LogoWrapper>
+        <Styled.Logo src={logo} alt="Logo" />
+      </Styled.LogoWrapper>
+      <Styled.Burger onClick={() => setVisible(!visible)}>
+        <Styled.BurgerLines active={visible} />
+      </Styled.Burger>
       {visible && (
-        <div className="nav__menu menu">
-          <ul className="menu__list">
+        <Styled.NavMenuWrapper>
+          <Styled.MenuList>
             <NavLink href="#" name="Главное" />
             <NavLink href="#" name="Мой плейлист" />
             <NavLink href="#" name="Войти" />
-          </ul>
-        </div>
+          </Styled.MenuList>
+        </Styled.NavMenuWrapper>
       )}
-    </div>
+    </Styled.NavWrapper>
   )
 }
 

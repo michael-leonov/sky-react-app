@@ -3,17 +3,18 @@ import Nav from './main/Nav'
 import ContentBlock from './main/ContentBlock'
 import SideBar from './main/SideBar'
 import Bar from './bar/Bar'
+import * as Styled from './styles'
 
 function Main() {
   return (
-    <div className="container">
-      <main className="main">
+    <Styled.Container>
+      <Styled.Main>
         <Nav />
         <ContentBlock />
         <SideBar />
-      </main>
+      </Styled.Main>
       <Bar />
-    </div>
+    </Styled.Container>
   )
 }
 

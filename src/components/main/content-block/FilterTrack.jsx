@@ -1,43 +1,38 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useEffect, useState } from 'react'
+import * as Styled from './styles/filter-track-styles'
 
-function FilterTrack({ name, filter, items, filterName }) {
+function FilterTrack({ filter, items, filterName }) {
   const [active, setActive] = useState(false)
   const [filterCase, setFilter] = useState([])
 
   function chosenFilter() {
     setActive(!active)
     if (filterName === 'author') {
-      setFilter(items.map((item) => item.author).reduce((result, item) => result.includes(item) ? result : [... result, item], []))
+      setFilter([...new Set(items.map((item) => item.author))])
     } else if (filterName === 'genre') {
-      setFilter(items.map((item) => item.genre).reduce((result, item) => result.includes(item) ? result : [... result, item], []))
+      setFilter([...new Set(items.map((item) => item.genre))])
     } else if (filterName === 'release_date') {
-      setFilter(items.map((item) => item.release_date).reduce((result, item) => result.includes(item) ? result : [... result, item], []))
+      setFilter([...new Set(items.map((item) => item.release_date))])
     }
   }
-  
 
   return (
-    <div className="filter__wrapper">
-      <div
-        className={`filter__button button-${name} _btn-text ${
-          active ? 'active' : ''
-        }`}
-        onClick={() => chosenFilter()}
-      >
+    <Styled.FilterWrapper>
+      <Styled.FilterBtn onClick={() => chosenFilter()}>
         {filter}
-      </div>
+      </Styled.FilterBtn>
       {active && (
-        <div className="filter__modal">
-          <ul className="filter__modal-list">
+        <Styled.FilterModal>
+          <Styled.FilterModalList>
             {filterCase.map((item) => (
-              <li className="item">{item}</li>
+              <Styled.FilterModalItem>{item}</Styled.FilterModalItem>
             ))}
-          </ul>
-        </div>
+          </Styled.FilterModalList>
+        </Styled.FilterModal>
       )}
-    </div>
+    </Styled.FilterWrapper>
   )
 }
 

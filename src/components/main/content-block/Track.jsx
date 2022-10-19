@@ -4,17 +4,18 @@ import TrackAuthor from './track/TrackAuthor'
 import TrackTitle from './track/TrackTitle'
 import TrackAlbum from './track/TrackAlbum'
 import TrackTime from './track/TrackTime'
+import * as Styled from './styles/track-styles'
 
-function Track({ name, author, genre, duration_in_seconds, album }) {
+function Track({ name, author, duration_in_seconds, album }) {
   return (
-    <div className="playlist__item">
-      <div className="playlist__track track">
+    <Styled.TrackItem>
+      <Styled.TrackWrapper>
         <TrackTitle title={name} />
         <TrackAuthor author={author} />
         <TrackAlbum album={album} />
         <TrackTime time={duration_in_seconds} />
-      </div>
-    </div>
+      </Styled.TrackWrapper>
+    </Styled.TrackItem>
   )
 }
 
