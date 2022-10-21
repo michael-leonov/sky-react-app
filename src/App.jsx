@@ -1,5 +1,6 @@
 import React from 'react'
 import Main from './components/Main'
+import AppRoutes from './routes'
 import * as Styled from './styles'
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
       <Styled.Wrapper>
         <Main />
       </Styled.Wrapper>
+      <AppRoutes />
     </>
   )
 }
