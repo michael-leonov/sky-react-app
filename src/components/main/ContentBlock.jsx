@@ -12,12 +12,12 @@ import SkeletonTrack from './content-block/SkeletonTrack'
 import * as Styled from './styles/content-block-styles'
 import { StyledTrackTimeIcon } from './content-block/styles/track-styles'
 
-function ContentBlock() {
+function ContentBlock({ title = 'Треки', urlToFetch }) {
   const [isLoading, setLoading] = useState(true)
   const [tracks, setTracks] = useState([])
 
   useEffect(() => {
-    fetch(`${window.baseUrl}catalog/track/all/`)
+    fetch(`${window.baseUrl + urlToFetch}`)
       .then((res) => res.json())
       .then((json) => {
         setTracks(json.results)
@@ -31,7 +31,7 @@ function ContentBlock() {
   return (
     <Styled.CenterBlock>
       <Search />
-      <Styled.Title>Треки</Styled.Title>
+      <Styled.Title>{title}</Styled.Title>
       <Styled.FilterBlock className="filter">
         <Styled.FilterHeader>Искать по:</Styled.FilterHeader>
         <FilterTrack filter="исполнителю" items={tracks} filterName="author" />

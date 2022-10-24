@@ -3,14 +3,14 @@ import Nav from './main/Nav'
 import ContentBlock from './main/ContentBlock'
 import SideBar from './main/SideBar'
 import Bar from './bar/Bar'
-import * as Styled from './styles'
+import * as Styled from './main-styles'
 
 function Main() {
   return (
     <Styled.Container>
       <Styled.Main>
         <Nav />
-        <ContentBlock />
+        <ContentBlock urlToFetch="catalog/track/all/" />
         <SideBar />
       </Styled.Main>
       <Bar />

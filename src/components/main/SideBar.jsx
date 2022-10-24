@@ -13,14 +13,17 @@ function SideBar() {
           <SidebarItem
             imgPath={require('./sidebar/img/playlist01.png')}
             alt="day's playlist"
+            link="/playlist/1"
           />
           <SidebarItem
             imgPath={require('./sidebar/img/playlist02.png')}
             alt="day's playlist"
+            // link={`/playlist/${id}`}
           />
           <SidebarItem
             imgPath={require('./sidebar/img/playlist03.png')}
             alt="day's playlist"
+            // link={`/playlist/${id}`}
           />
         </Styled.SideBarList>
       </Styled.SideBarBlock>

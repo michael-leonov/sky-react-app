@@ -1,11 +1,23 @@
 import React from 'react'
-import Main from '../../components/Main'
+import { Link } from 'react-router-dom'
+import Logo from '../../components/img/logo.png'
+import * as Styled from './auth-styles'
 
-function Login() {
+function Login({ setToken }) {
   return (
-    <div>
-      <Main />
-    </div>
+    <Styled.AuthWrapper>
+      <Link to="/">
+        <img src={Logo} alt="Logo" />
+      </Link>
+      <Styled.InputAuth type="text" placeholder="Логин" />
+      <Styled.InputAuth type="text" placeholder="Пароль" />
+      <Styled.EventBtn type="button" primary onClick={setToken}>
+        Войти
+      </Styled.EventBtn>
+      <Link to="/registration">
+        <Styled.EventBtn type="button">Зарегистрироваться</Styled.EventBtn>
+      </Link>
+    </Styled.AuthWrapper>
   )
 }
 
