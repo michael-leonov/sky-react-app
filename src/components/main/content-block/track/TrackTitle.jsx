@@ -10,7 +10,7 @@ function TrackTitle({ title }) {
           <use xlinkHref={`${titleIcon}#icon-note`} />
         </Styled.TrackTitleImg>
       </Styled.TrackTitleImgWrapper>
-      <div className="track__title-text">
+      <div>
         <Styled.TrackTitleLink href="http://">
           {title} <Styled.TrackTitleLinkSpan />
         </Styled.TrackTitleLink>

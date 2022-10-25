@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 /* eslint-disable no-param-reassign */
 /* eslint-disable array-callback-return */
 /* eslint-disable react/jsx-props-no-spreading */
@@ -12,35 +11,20 @@ import SkeletonTrack from './content-block/SkeletonTrack'
 import * as Styled from './styles/content-block-styles'
 import { StyledTrackTimeIcon } from './content-block/styles/track-styles'
 
-function ContentBlock({ title = 'Треки', urlToFetch }) {
-  const [isLoading, setLoading] = useState(true)
-  const [tracks, setTracks] = useState([])
-
-  useEffect(() => {
-    fetch(`${window.baseUrl + urlToFetch}`)
-      .then((res) => res.json())
-      .then((json) => {
-        setTracks(json.results)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-      .finally(() => setLoading(false))
-  }, [])
-
+function ContentBlock({ title = 'Треки', arr, isLoading }) {
   return (
     <Styled.CenterBlock>
       <Search />
       <Styled.Title>{title}</Styled.Title>
       <Styled.FilterBlock className="filter">
         <Styled.FilterHeader>Искать по:</Styled.FilterHeader>
-        <FilterTrack filter="исполнителю" items={tracks} filterName="author" />
+        <FilterTrack filter="исполнителю" items={arr} filterName="author" />
         <FilterTrack
           filter="году выпуска"
-          items={tracks}
+          items={arr}
           filterName="release_date"
         />
-        <FilterTrack filter="жанру" items={tracks} filterName="genre" />
+        <FilterTrack filter="жанру" items={arr} filterName="genre" />
       </Styled.FilterBlock>
       <Styled.CenterBlockContent>
         <Styled.ContentTitles>
@@ -61,7 +45,7 @@ function ContentBlock({ title = 'Треки', urlToFetch }) {
           </Styled.SkeletonWrapper>
         ) : (
           <Styled.Playlist>
-            {tracks.map((track) => (
+            {arr.map((track) => (
               <Track key={track.id} {...track} />
             ))}
           </Styled.Playlist>

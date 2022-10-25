@@ -29,7 +29,7 @@ export const TrackTitleLink = styled.a`
   line-height: 24px;
   color: #ffffff;
 `
-export const TrackTitleLinkSpan = styled.a`
+export const TrackTitleLinkSpan = styled.span`
   font-style: normal;
   font-weight: 400;
   font-size: 16px;

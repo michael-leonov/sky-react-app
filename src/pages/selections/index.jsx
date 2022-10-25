@@ -1,21 +1,34 @@
-import React, { useParams, useState } from 'react'
+/* eslint-disable no-console */
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 import * as Styled from '../../components/main-styles'
 import Nav from '../../components/main/Nav'
 import ContentBlock from '../../components/main/ContentBlock'
 import Bar from '../../components/bar/Bar'
 
 function Playlist() {
-  // Поднимать получение треков?
+  const params = useParams()
+  const [selection, setSelection] = useState({})
+  const [isLoading, setLoading] = useState(true)
 
-  //   const params = useParams()
-
-  //   const select = tracks.find((el) => el.id === Number(params.id))
+  useEffect(() => {
+    fetch(`${window.baseUrl}catalog/selection`)
+      .then((res) => res.json())
+      .then((json) => {
+        const selectionJSON = json.find(({ id }) => id === Number(params.id))
+        setSelection(selectionJSON)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+      .finally(() => setLoading(false))
+  }, [])
 
   return (
     <Styled.Container>
       <Styled.Main>
         <Nav />
-        <ContentBlock urlToFetch="catalog/selection/" />
+        <ContentBlock arr={selection.items} isLoading={isLoading} />
       </Styled.Main>
       <Bar />
     </Styled.Container>
