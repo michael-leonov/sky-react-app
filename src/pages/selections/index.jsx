@@ -12,11 +12,10 @@ function Playlist() {
   const [isLoading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetch(`${window.baseUrl}catalog/selection`)
+    fetch(`${window.baseUrl}catalog/selection/${Number(params.id)}`)
       .then((res) => res.json())
       .then((json) => {
-        const selectionJSON = json.find(({ id }) => id === Number(params.id))
-        setSelection(selectionJSON)
+        setSelection(json)
       })
       .catch((err) => {
         console.log(err)
