@@ -36,9 +36,8 @@ function AppRoutes({ auth, setToken }) {
           <Route path="/favorites" element={<Favorites />} />
           <Route path="/playlist/:id" element={<Playlist />} />
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
-
-      {/* <Route path="*" element={<NotFound />} /> */}
     </div>
   )
 }

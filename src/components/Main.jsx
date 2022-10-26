@@ -26,7 +26,7 @@ function Main() {
     <Styled.Container>
       <Styled.Main>
         <Nav />
-        <ContentBlock arr={tracks} isLoading={isLoading} />
+        <ContentBlock tracks={tracks} isLoading={isLoading} />
         <SideBar />
       </Styled.Main>
       <Bar />

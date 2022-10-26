@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import * as Styled from './styles'
 
 function NavLink({ name, link }) {

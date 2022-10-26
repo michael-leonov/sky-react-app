@@ -27,7 +27,7 @@ function Playlist() {
     <Styled.Container>
       <Styled.Main>
         <Nav />
-        <ContentBlock arr={selection.items} isLoading={isLoading} />
+        <ContentBlock tracks={selection.items} isLoading={isLoading} />
       </Styled.Main>
       <Bar />
     </Styled.Container>

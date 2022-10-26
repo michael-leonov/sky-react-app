@@ -1,5 +1,3 @@
-/* eslint-disable no-param-reassign */
-/* eslint-disable array-callback-return */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useState, useEffect } from 'react'
 import Search from './content-block/Search'
@@ -11,20 +9,20 @@ import SkeletonTrack from './content-block/SkeletonTrack'
 import * as Styled from './styles/content-block-styles'
 import { StyledTrackTimeIcon } from './content-block/styles/track-styles'
 
-function ContentBlock({ title = 'Треки', arr, isLoading }) {
+function ContentBlock({ title = 'Треки', tracks, isLoading }) {
   return (
     <Styled.CenterBlock>
       <Search />
       <Styled.Title>{title}</Styled.Title>
       <Styled.FilterBlock className="filter">
         <Styled.FilterHeader>Искать по:</Styled.FilterHeader>
-        <FilterTrack filter="исполнителю" items={arr} filterName="author" />
+        <FilterTrack filter="исполнителю" items={tracks} filterName="author" />
         <FilterTrack
           filter="году выпуска"
-          items={arr}
+          items={tracks}
           filterName="release_date"
         />
-        <FilterTrack filter="жанру" items={arr} filterName="genre" />
+        <FilterTrack filter="жанру" items={tracks} filterName="genre" />
       </Styled.FilterBlock>
       <Styled.CenterBlockContent>
         <Styled.ContentTitles>
@@ -45,7 +43,7 @@ function ContentBlock({ title = 'Треки', arr, isLoading }) {
           </Styled.SkeletonWrapper>
         ) : (
           <Styled.Playlist>
-            {arr.map((track) => (
+            {tracks.map((track) => (
               <Track key={track.id} {...track} />
             ))}
           </Styled.Playlist>

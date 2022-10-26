@@ -10,13 +10,13 @@ export const AuthWrapper = styled.div`
   background-color: white;
 `
 export const EventBtn = styled.button`
-  background-color: ${(props) => (props.primary ? '#580ea2' : 'white')};
-  color: ${(props) => (props.primary ? 'white' : 'black')};
+  background-color: ${({ primary }) => (primary ? '#580ea2' : 'white')};
+  color: ${({ primary }) => (primary ? 'white' : 'black')};
   border-radius: 6px;
   padding: 12px 0;
   font-size: 18px;
   width: 100%;
-  border: ${(props) => (props.primary ? 'none' : '1px solid #D0CECE')};
+  border: ${({ primary }) => (primary ? 'none' : '1px solid #D0CECE')};
 `
 export const InputAuth = styled.input`
   color: black;
