@@ -40,6 +40,10 @@ export const GlobalStyle = createGlobalStyle`
     height: 100%;
     font-family: 'Stratos', sans-serif;
     color: #ffffff;
+    display: ${({ auth }) => (auth ? 'flex' : 'block')}; 
+    justify-content: ${({ auth }) => (auth ? 'center' : 'normal')}; 
+    align-items: ${({ auth }) => (auth ? 'center' : 'normal')};
+    background: ${({ auth }) => (auth ? 'rgba(0, 0, 0, 0.85)' : 'inherit')};
   }
 `
 

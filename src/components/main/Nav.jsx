@@ -19,9 +19,9 @@ function Nav() {
       {visible && (
         <Styled.NavMenuWrapper>
           <Styled.MenuList>
-            <NavLink href="#" name="Главное" />
-            <NavLink href="#" name="Мой плейлист" />
-            <NavLink href="#" name="Войти" />
+            <NavLink link="/" name="Главное" />
+            <NavLink link="/favorites" name="Мой плейлист" />
+            <NavLink link="/login" name="Выйти" />
           </Styled.MenuList>
         </Styled.NavMenuWrapper>
       )}

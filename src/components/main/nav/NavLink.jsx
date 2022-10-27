@@ -1,10 +1,10 @@
 import React from 'react'
 import * as Styled from './styles'
 
-function NavLink({ name, href }) {
+function NavLink({ name, link }) {
   return (
     <Styled.MenuItem>
-      <Styled.MenuItemLink href={href}>{name}</Styled.MenuItemLink>
+      <Styled.MenuItemLink to={link}>{name}</Styled.MenuItemLink>
     </Styled.MenuItem>
   )
 }

@@ -1,6 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable no-param-reassign */
-/* eslint-disable array-callback-return */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useState, useEffect } from 'react'
 import Search from './content-block/Search'
@@ -12,26 +9,11 @@ import SkeletonTrack from './content-block/SkeletonTrack'
 import * as Styled from './styles/content-block-styles'
 import { StyledTrackTimeIcon } from './content-block/styles/track-styles'
 
-function ContentBlock() {
-  const [isLoading, setLoading] = useState(true)
-  const [tracks, setTracks] = useState([])
-
-  useEffect(() => {
-    fetch(`${window.baseUrl}catalog/track/all/`)
-      .then((res) => res.json())
-      .then((json) => {
-        setTracks(json.results)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-      .finally(() => setLoading(false))
-  }, [])
-
+function ContentBlock({ title = 'Треки', tracks, isLoading }) {
   return (
     <Styled.CenterBlock>
       <Search />
-      <Styled.Title>Треки</Styled.Title>
+      <Styled.Title>{title}</Styled.Title>
       <Styled.FilterBlock className="filter">
         <Styled.FilterHeader>Искать по:</Styled.FilterHeader>
         <FilterTrack filter="исполнителю" items={tracks} filterName="author" />
