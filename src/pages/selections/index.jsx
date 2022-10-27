@@ -5,6 +5,7 @@ import * as Styled from '../../components/main-styles'
 import Nav from '../../components/main/Nav'
 import ContentBlock from '../../components/main/ContentBlock'
 import Bar from '../../components/bar/Bar'
+import baseUrl from '../../constants'
 
 function Playlist() {
   const params = useParams()
@@ -12,7 +13,7 @@ function Playlist() {
   const [isLoading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetch(`${window.baseUrl}catalog/selection/${Number(params.id)}`)
+    fetch(`${baseUrl}catalog/selection/${Number(params.id)}`)
       .then((res) => res.json())
       .then((json) => {
         setSelection(json)
