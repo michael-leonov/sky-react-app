@@ -1,4 +1,5 @@
-import React from 'react'
+/* eslint-disable no-unused-expressions */
+import React, { useEffect, useMemo, useState } from 'react'
 import BarElement from './BarElement'
 import TrackPlayContain from './track-play/TrackPlayContain'
 import sprite from '../img/sprite.svg'
@@ -6,12 +7,31 @@ import TrackPlayLike from './track-play/TrackPlayLike'
 import * as Styled from './styles/bar-styles'
 
 function Bar() {
+  const path = '../../../public/Bobby_Marleni_-_Dropin.mp3'
+
+  const audio = useMemo(() => new Audio(path), [])
+
+  const [playing, setPlaying] = useState(false)
+
+  const toggle = () => setPlaying(!playing)
+
+  useEffect(() => {
+    playing ? audio.play() : audio.pause()
+  }, [playing])
+
+  useEffect(() => {
+    audio.addEventListener('ended', () => setPlaying(false))
+    return () => {
+      audio.removeEventListener('ended', () => setPlaying(false))
+    }
+  }, [])
+
   return (
     <Styled.BarWrapper>
       <Styled.BarContent>
         <Styled.ProgressBar />
         <Styled.BarPlayerBlock>
-          <Styled.BarPlayer className="player">
+          <Styled.BarPlayer>
             <Styled.BarControls>
               <BarElement
                 marginRight="23px"
@@ -27,7 +47,10 @@ function Bar() {
                 fillSvg="#d9d9d9"
                 el="play"
                 alt="play"
+                onClick={toggle}
               />
+              <div> {playing ? 'pause' : 'play'}</div>
+
               <BarElement
                 marginRight="28px"
                 fill="#a53939"

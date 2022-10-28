@@ -77,6 +77,10 @@ export const StyledBarBtn = styled.div`
   align-items: center;
   margin-right: ${(props) => props.marginRight};
   fill: ${(props) => props.fill};
+
+  :hover {
+    cursor: pointer;
+  }
 `
 export const StyledBarBtnSvg = styled.svg`
   width: ${(props) => props.widthSvg};
