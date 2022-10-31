@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-expressions */
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 import BarElement from './BarElement'
 import TrackPlayContain from './track-play/TrackPlayContain'
 import sprite from '../img/sprite.svg'
@@ -9,7 +9,8 @@ import * as Styled from './styles/bar-styles'
 function Bar() {
   const path = '../../../public/Bobby_Marleni_-_Dropin.mp3'
 
-  const audio = useMemo(() => new Audio(path), [])
+  const audioRef = useRef(new Audio(path))
+  const audio = audioRef.current
 
   const [playing, setPlaying] = useState(false)
 
@@ -48,6 +49,7 @@ function Bar() {
                 el="play"
                 alt="play"
                 onClick={toggle}
+                ref={audioRef}
               />
               <div> {playing ? 'pause' : 'play'}</div>
 
