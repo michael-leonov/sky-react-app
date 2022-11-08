@@ -1,36 +1,45 @@
 /* eslint-disable no-unused-expressions */
-import React, { useEffect, useMemo, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import BarElement from './BarElement'
 import TrackPlayContain from './track-play/TrackPlayContain'
 import sprite from '../img/sprite.svg'
 import TrackPlayLike from './track-play/TrackPlayLike'
 import * as Styled from './styles/bar-styles'
+import sound from '../../assets/static/Bobby_Marleni_-_Dropin.mp3'
 
 function Bar() {
-  const path = '../../../public/Bobby_Marleni_-_Dropin.mp3'
-
-  const audioRef = useRef(new Audio(path))
-  const audio = audioRef.current
+  const audioRef = useRef(new Audio(sound))
+  audioRef.current.preload = 'metadata'
 
   const [playing, setPlaying] = useState(false)
+  const [progressValue, setProgressValue] = useState(0)
 
-  const toggle = () => setPlaying(!playing)
+  const togglePlay = () => setPlaying(!playing)
+
+  const musicProgress = () => {
+    const progress =
+      Math.floor(audioRef.current.currentTime) /
+      (Math.floor(audioRef.current.duration) / 100)
+    setProgressValue(progress)
+  }
 
   useEffect(() => {
-    playing ? audio.play() : audio.pause()
+    playing ? audioRef.current.play() : audioRef.current.pause()
+    // console.log(audioRef.current.duration)
+    audioRef.current.addEventListener('timeupdate', musicProgress)
   }, [playing])
 
   useEffect(() => {
-    audio.addEventListener('ended', () => setPlaying(false))
+    audioRef.current.addEventListener('ended', () => setPlaying(false))
     return () => {
-      audio.removeEventListener('ended', () => setPlaying(false))
+      audioRef.current.removeEventListener('ended', () => setPlaying(false))
     }
   }, [])
 
   return (
     <Styled.BarWrapper>
       <Styled.BarContent>
-        <Styled.ProgressBar />
+        <Styled.ProgressBar value={progressValue} max="100" />
         <Styled.BarPlayerBlock>
           <Styled.BarPlayer>
             <Styled.BarControls>
@@ -48,10 +57,9 @@ function Bar() {
                 fillSvg="#d9d9d9"
                 el="play"
                 alt="play"
-                onClick={toggle}
-                ref={audioRef}
+                onClick={togglePlay}
               />
-              <div> {playing ? 'pause' : 'play'}</div>
+              <div> {playing ? 'pause' : 'play'} </div>
 
               <BarElement
                 marginRight="28px"
