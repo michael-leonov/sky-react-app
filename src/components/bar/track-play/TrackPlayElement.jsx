@@ -7,21 +7,22 @@ function TrackPlayElement({
   height,
   fill,
   stroke,
-  bgc,
+  backgroundColor,
   display,
-  ai,
-  jc,
-  mr,
-  ml,
-  ga,
-  mw,
+  alignItems,
+  justifyContent,
+  marginRight,
+  marginLeft,
+  gridArea,
+  minWidth,
   padding,
-  fs,
-  fw,
-  fz,
-  lh,
+  fontStyle,
+  fontWeight,
+  fontSize,
+  lineHeight,
   color,
-  ws,
+  whiteSpace,
+  gridRow,
 }) {
   return (
     <StyledTrackPlayElement
@@ -29,21 +30,22 @@ function TrackPlayElement({
       height={height}
       fill={fill}
       stroke={stroke}
-      backgroundColor={bgc}
+      backgroundColor={backgroundColor}
       display={display}
-      alignItems={ai}
-      justifyContent={jc}
-      marginRight={mr}
-      marginLeft={ml}
-      gridArea={ga}
-      minWidth={mw}
+      alignItems={alignItems}
+      justifyContent={justifyContent}
+      marginRight={marginRight}
+      marginLeft={marginLeft}
+      gridArea={gridArea}
+      gridRow={gridRow}
+      minWidth={minWidth}
       padding={padding}
-      fontStyle={fs}
-      fontWeight={fw}
-      fontSize={fz}
-      lineHeight={lh}
+      fontStyle={fontStyle}
+      fontWeight={fontWeight}
+      fontSize={fontSize}
+      lineHeight={lineHeight}
       color={color}
-      whiteSpace={ws}
+      whiteSpace={whiteSpace}
     >
       {tag}
     </StyledTrackPlayElement>

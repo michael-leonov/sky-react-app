@@ -4,7 +4,7 @@ export const TrackPlayInfo = styled.div`
   width: auto;
   display: grid;
   grid-template-columns: auto 1fr;
-  grid-template-areas: 'image author' 'image album';
+  grid-template-areas: 'image album' 'image author';
   align-items: center;
 `
 export const TrackPlayLikeDislike = styled.div`
@@ -26,6 +26,7 @@ export const StyledTrackPlayElement = styled.div`
   margin-right: ${(props) => props.marginRight};
   margin-left: ${(props) => props.marginLeft};
   grid-area: ${(props) => props.gridArea};
+  grid-row: ${(props) => props.gridRow};
   min-width: ${(props) => props.minWidth};
   padding: ${(props) => props.padding};
   font-style: ${(props) => props.fontStyle};
@@ -46,4 +47,11 @@ export const StyledTrackPlayElement = styled.div`
     stroke: #ffffff;
     cursor: pointer;
   }
+`
+
+export const TagElementInfo = styled.a`
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  color: white;
 `

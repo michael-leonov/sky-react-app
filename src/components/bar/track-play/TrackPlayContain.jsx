@@ -30,32 +30,12 @@ function TrackPlayContain() {
       <TrackPlayElement
         gridArea="author"
         minWidth="49px"
-        tag={
-          <a
-            fontStyle="normal"
-            fontWeight="400"
-            fontSize="16px"
-            color="white"
-            href="http://"
-          >
-            {}
-          </a>
-        }
+        tag={<Styled.TagElementInfo>Bobby Marleni</Styled.TagElementInfo>}
       />
       <TrackPlayElement
         gridArea="album"
         minWidth="49px"
-        tag={
-          <a
-            fontStyle="normal"
-            fontWeight="400"
-            fontSize="13px"
-            color="white"
-            href="http://"
-          >
-            {}
-          </a>
-        }
+        tag={<Styled.TagElementInfo>Dropin</Styled.TagElementInfo>}
       />
     </Styled.TrackPlayInfo>
   )

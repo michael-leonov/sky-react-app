@@ -11,6 +11,7 @@ function BarElement({
   heightSvg,
   fillSvg,
   strokeSvg,
+  onClick,
 }) {
   return (
     <StyledBarBtn marginRight={marginRight} fill={fill}>
@@ -20,6 +21,7 @@ function BarElement({
         fill={fillSvg}
         stroke={strokeSvg}
         alt={alt}
+        onClick={onClick}
       >
         <use xlinkHref={`${sprite}#icon-${el}`} />
       </StyledBarBtnSvg>

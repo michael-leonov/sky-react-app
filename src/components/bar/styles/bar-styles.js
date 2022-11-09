@@ -11,11 +11,16 @@ export const BarContent = styled.div`
   display: flex;
   flex-direction: column;
 `
-export const ProgressBar = styled.div`
+export const ProgressBar = styled.progress`
   width: 100%;
   height: 5px;
   background: #2e2e2e;
+
+  ::-webkit-progress-value {
+    background: white;
+  }
 `
+
 export const BarPlayerBlock = styled.div`
   height: 73px;
   display: flex;
@@ -77,6 +82,10 @@ export const StyledBarBtn = styled.div`
   align-items: center;
   margin-right: ${(props) => props.marginRight};
   fill: ${(props) => props.fill};
+
+  :hover {
+    cursor: pointer;
+  }
 `
 export const StyledBarBtnSvg = styled.svg`
   width: ${(props) => props.widthSvg};

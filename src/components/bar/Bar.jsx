@@ -1,17 +1,47 @@
-import React from 'react'
+/* eslint-disable no-unused-expressions */
+import React, { useEffect, useRef, useState } from 'react'
 import BarElement from './BarElement'
 import TrackPlayContain from './track-play/TrackPlayContain'
 import sprite from '../img/sprite.svg'
 import TrackPlayLike from './track-play/TrackPlayLike'
 import * as Styled from './styles/bar-styles'
+import sound from '../../assets/static/Bobby_Marleni_-_Dropin.mp3'
 
 function Bar() {
+  const audioRef = useRef(new Audio(sound))
+  audioRef.current.preload = 'metadata'
+
+  const [playing, setPlaying] = useState(false)
+  const [progressValue, setProgressValue] = useState(0)
+
+  const togglePlay = () => setPlaying(!playing)
+
+  const musicProgress = () => {
+    const progress =
+      Math.floor(audioRef.current.currentTime) /
+      (Math.floor(audioRef.current.duration) / 100)
+    setProgressValue(progress)
+  }
+
+  useEffect(() => {
+    playing ? audioRef.current.play() : audioRef.current.pause()
+    // console.log(audioRef.current.duration)
+    audioRef.current.addEventListener('timeupdate', musicProgress)
+  }, [playing])
+
+  useEffect(() => {
+    audioRef.current.addEventListener('ended', () => setPlaying(false))
+    return () => {
+      audioRef.current.removeEventListener('ended', () => setPlaying(false))
+    }
+  }, [])
+
   return (
     <Styled.BarWrapper>
       <Styled.BarContent>
-        <Styled.ProgressBar />
+        <Styled.ProgressBar value={progressValue} max="100" />
         <Styled.BarPlayerBlock>
-          <Styled.BarPlayer className="player">
+          <Styled.BarPlayer>
             <Styled.BarControls>
               <BarElement
                 marginRight="23px"
@@ -27,7 +57,10 @@ function Bar() {
                 fillSvg="#d9d9d9"
                 el="play"
                 alt="play"
+                onClick={togglePlay}
               />
+              <div> {playing ? 'pause' : 'play'} </div>
+
               <BarElement
                 marginRight="28px"
                 fill="#a53939"
