@@ -6,7 +6,7 @@ export const MenuItem = styled.li`
   margin-bottom: 16px;
 `
 export const MenuItemLink = styled(Link)`
-  color: #fff;
+  color: ${({ theme }) => theme.color};
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;

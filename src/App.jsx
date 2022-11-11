@@ -1,15 +1,31 @@
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 import AppRoutes from './routes'
 import * as Styled from './styles'
+import { ThemeContext, themes, useThemeContext } from './context/theme'
 
 function App() {
   const [token, setToken] = useState()
+  const [currentTheme, setCurrentTheme] = useState(themes.light)
+
+  const toggleTheme = () => {
+    if (currentTheme === themes.dark) {
+      setCurrentTheme(themes.light)
+      return
+    }
+
+    setCurrentTheme(themes.dark)
+  }
+
+  const themeContextMemo = useMemo(
+    () => ({ theme: currentTheme, toggleTheme }),
+    [{ theme: currentTheme, toggleTheme }]
+  )
 
   return (
-    <>
-      <Styled.GlobalStyle auth={!token} />
+    <ThemeContext.Provider value={themeContextMemo}>
+      <Styled.GlobalStyle auth={!token} theme={currentTheme} />
       <AppRoutes auth={token} setToken={setToken} />
-    </>
+    </ThemeContext.Provider>
   )
 }
 

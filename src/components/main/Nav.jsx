@@ -4,13 +4,16 @@ import React, { useState } from 'react'
 import logo from '../img/logo.png'
 import NavLink from './nav/NavLink'
 import * as Styled from './styles/nav-styles'
+import { useThemeContext } from '../../context/theme'
 
 function Nav() {
   const [visible, setVisible] = useState(false)
 
+  const { toggleTheme } = useThemeContext()
+
   return (
     <Styled.NavWrapper>
-      <Styled.LogoWrapper>
+      <Styled.LogoWrapper onClick={toggleTheme}>
         <Styled.Logo src={logo} alt="Logo" />
       </Styled.LogoWrapper>
       <Styled.Burger onClick={() => setVisible(!visible)}>
