@@ -44,8 +44,7 @@ export const GlobalStyle = createGlobalStyle`
     justify-content: ${({ auth }) => (auth ? 'center' : 'normal')}; 
     align-items: ${({ auth }) => (auth ? 'center' : 'normal')};
     background: ${({ theme }) => theme.background};
-    /* background: ${({ auth }) =>
-      auth ? 'rgba(0, 0, 0, 0.85)' : 'inherit'}; */
+    transition: all 0.4s ease-in-out;
   }
 `
 

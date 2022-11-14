@@ -5,15 +5,23 @@ import logo from '../img/logo.png'
 import NavLink from './nav/NavLink'
 import * as Styled from './styles/nav-styles'
 import { useThemeContext } from '../../context/theme'
+import DarkThemeImg from '../../assets/static/DarkTheme.svg'
+import LightThemeImg from '../../assets/static/LightTheme.svg'
 
 function Nav() {
   const [visible, setVisible] = useState(false)
+  const [isDarkTheme, setDarkTheme] = useState(true)
 
-  const { toggleTheme } = useThemeContext()
+  const { theme, toggleTheme } = useThemeContext()
+
+  const toggleThemeFunc = () => {
+    setDarkTheme(!isDarkTheme)
+    toggleTheme()
+  }
 
   return (
-    <Styled.NavWrapper>
-      <Styled.LogoWrapper onClick={toggleTheme}>
+    <Styled.NavWrapper theme={theme}>
+      <Styled.LogoWrapper>
         <Styled.Logo src={logo} alt="Logo" />
       </Styled.LogoWrapper>
       <Styled.Burger onClick={() => setVisible(!visible)}>
@@ -28,6 +36,12 @@ function Nav() {
           </Styled.MenuList>
         </Styled.NavMenuWrapper>
       )}
+      <div onClick={toggleThemeFunc}>
+        <img
+          src={isDarkTheme ? DarkThemeImg : LightThemeImg}
+          alt={isDarkTheme ? 'Dark theme icon' : 'Light theme icon'}
+        />
+      </div>
     </Styled.NavWrapper>
   )
 }

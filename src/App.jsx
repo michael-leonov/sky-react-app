@@ -1,11 +1,11 @@
 import React, { useState, useMemo } from 'react'
 import AppRoutes from './routes'
 import * as Styled from './styles'
-import { ThemeContext, themes, useThemeContext } from './context/theme'
+import { ThemeContext, themes } from './context/theme'
 
 function App() {
   const [token, setToken] = useState()
-  const [currentTheme, setCurrentTheme] = useState(themes.light)
+  const [currentTheme, setCurrentTheme] = useState(themes.dark)
 
   const toggleTheme = () => {
     if (currentTheme === themes.dark) {
