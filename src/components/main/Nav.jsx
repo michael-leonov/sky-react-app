@@ -10,17 +10,11 @@ import LightThemeImg from '../../assets/static/LightTheme.svg'
 
 function Nav() {
   const [visible, setVisible] = useState(false)
-  const [isDarkTheme, setDarkTheme] = useState(true)
 
-  const { theme, toggleTheme } = useThemeContext()
-
-  const toggleThemeFunc = () => {
-    setDarkTheme(!isDarkTheme)
-    toggleTheme()
-  }
+  const { toggleTheme, themeContext } = useThemeContext()
 
   return (
-    <Styled.NavWrapper theme={theme}>
+    <Styled.NavWrapper>
       <Styled.LogoWrapper>
         <Styled.Logo src={logo} alt="Logo" />
       </Styled.LogoWrapper>
@@ -36,10 +30,14 @@ function Nav() {
           </Styled.MenuList>
         </Styled.NavMenuWrapper>
       )}
-      <div onClick={toggleThemeFunc}>
+      <div onClick={toggleTheme}>
         <img
-          src={isDarkTheme ? DarkThemeImg : LightThemeImg}
-          alt={isDarkTheme ? 'Dark theme icon' : 'Light theme icon'}
+          src={themeContext.name === 'dark' ? DarkThemeImg : LightThemeImg}
+          alt={
+            themeContext.name === 'dark'
+              ? 'Dark theme icon'
+              : 'Light theme icon'
+          }
         />
       </div>
     </Styled.NavWrapper>

@@ -4,10 +4,12 @@ export const themes = {
   light: {
     color: '#282c34',
     background: '#fff',
+    name: 'light',
   },
   dark: {
     color: '#fff',
     background: '#181818',
+    name: 'dark',
   },
 }
 

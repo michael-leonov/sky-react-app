@@ -5,7 +5,7 @@ export const Container = styled.div`
   height: 100vh;
   margin: 0 auto;
   position: relative;
-  background: ${({ theme }) => theme.background};
+  background: ${({ theme }) => theme.themeContext.background};
 `
 
 export const Main = styled.main`

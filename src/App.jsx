@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react'
+import { ThemeProvider } from 'styled-components'
 import AppRoutes from './routes'
 import * as Styled from './styles'
 import { ThemeContext, themes } from './context/theme'
@@ -17,14 +18,16 @@ function App() {
   }
 
   const themeContextMemo = useMemo(
-    () => ({ theme: currentTheme, toggleTheme }),
-    [{ theme: currentTheme, toggleTheme }]
+    () => ({ themeContext: currentTheme, toggleTheme }),
+    [currentTheme, toggleTheme]
   )
 
   return (
     <ThemeContext.Provider value={themeContextMemo}>
-      <Styled.GlobalStyle auth={!token} theme={currentTheme} />
-      <AppRoutes auth={token} setToken={setToken} />
+      <ThemeProvider theme={themeContextMemo}>
+        <Styled.GlobalStyle auth={!token} />
+        <AppRoutes auth={token} setToken={setToken} />
+      </ThemeProvider>
     </ThemeContext.Provider>
   )
 }
