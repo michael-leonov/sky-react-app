@@ -25,7 +25,6 @@ function Bar() {
 
   useEffect(() => {
     playing ? audioRef.current.play() : audioRef.current.pause()
-    // console.log(audioRef.current.duration)
     audioRef.current.addEventListener('timeupdate', musicProgress)
   }, [playing])
 

@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const NavWrapper = styled.div`
   width: 244px;
-  background-color: #181818;
+  background: ${({ theme }) => theme.themeContext.background};
   padding: 20px 0 20px 36px;
 `
 
@@ -34,6 +34,7 @@ export const BurgerLines = styled.span`
   width: 100%;
   height: 1px;
   background: ${({ active }) => (active ? 'transparent' : '#d3d3d3')};
+
   transform: translate(-50%, -50%);
   top: 50%;
   left: 50%;

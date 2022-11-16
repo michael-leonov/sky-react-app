@@ -4,9 +4,14 @@ import React, { useState } from 'react'
 import logo from '../img/logo.png'
 import NavLink from './nav/NavLink'
 import * as Styled from './styles/nav-styles'
+import { useThemeContext } from '../../context/theme'
+import DarkThemeImg from '../../assets/static/DarkTheme.svg'
+import LightThemeImg from '../../assets/static/LightTheme.svg'
 
 function Nav() {
   const [visible, setVisible] = useState(false)
+
+  const { toggleTheme, themeContext } = useThemeContext()
 
   return (
     <Styled.NavWrapper>
@@ -25,6 +30,16 @@ function Nav() {
           </Styled.MenuList>
         </Styled.NavMenuWrapper>
       )}
+      <div onClick={toggleTheme}>
+        <img
+          src={themeContext.name === 'dark' ? DarkThemeImg : LightThemeImg}
+          alt={
+            themeContext.name === 'dark'
+              ? 'Dark theme icon'
+              : 'Light theme icon'
+          }
+        />
+      </div>
     </Styled.NavWrapper>
   )
 }

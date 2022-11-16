@@ -6,10 +6,12 @@ import SideBar from './main/SideBar'
 import Bar from './bar/Bar'
 import * as Styled from './main-styles'
 import baseUrl from '../constants'
+import { useThemeContext } from '../context/theme'
 
 function Main() {
   const [isLoading, setLoading] = useState(true)
   const [tracks, setTracks] = useState([])
+  const { theme } = useThemeContext()
 
   useEffect(() => {
     fetch(`${baseUrl}catalog/track/all/`)
@@ -24,7 +26,7 @@ function Main() {
   }, [])
 
   return (
-    <Styled.Container>
+    <Styled.Container theme={theme}>
       <Styled.Main>
         <Nav />
         <ContentBlock tracks={tracks} isLoading={isLoading} />

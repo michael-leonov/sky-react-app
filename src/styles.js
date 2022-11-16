@@ -39,11 +39,12 @@ export const GlobalStyle = createGlobalStyle`
     width: 100%;
     height: 100%;
     font-family: 'Stratos', sans-serif;
-    color: #ffffff;
+    color: ${({ theme }) => theme.themeContext.color};
     display: ${({ auth }) => (auth ? 'flex' : 'block')}; 
     justify-content: ${({ auth }) => (auth ? 'center' : 'normal')}; 
     align-items: ${({ auth }) => (auth ? 'center' : 'normal')};
-    background: ${({ auth }) => (auth ? 'rgba(0, 0, 0, 0.85)' : 'inherit')};
+    background:${({ theme }) => theme.themeContext.background};
+    transition: all 0.4s ease-in-out;
   }
 `
 
