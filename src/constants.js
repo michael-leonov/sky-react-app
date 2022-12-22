@@ -1,3 +1,3 @@
-const baseUrl = 'http://51.250.95.23:8000/'
+const baseUrl = 'https://painassasin.online/'
 
 export default baseUrl
