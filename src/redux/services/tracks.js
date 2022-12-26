@@ -30,6 +30,14 @@ export const trackApi = createApi({
         body: track,
       }),
     }),
+
+    getAllSelection: builder.query({
+      query: () => 'catalog/selection/',
+    }),
+
+    getSelection: builder.query({
+      query: (selectionId) => `catalog/selection/${selectionId}/`,
+    }),
   }),
 })
 
@@ -38,4 +46,6 @@ export const {
   // useGetTrackQuery,
   useAddToFavoriteMutation,
   useDeleteFromFavoriteMutation,
+  useGetAllSelectionQuery,
+  useGetSelectionQuery,
 } = trackApi

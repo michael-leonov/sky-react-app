@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import * as Styled from '../../components/main-styles'
 import Nav from '../../components/main/Nav'
 import ContentBlock from '../../components/main/ContentBlock'

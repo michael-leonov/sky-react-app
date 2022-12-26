@@ -1,30 +1,26 @@
+/* eslint-disable import/no-dynamic-require */
 /* eslint-disable global-require */
 import React from 'react'
 import Personal from './sidebar/Personal'
 import SidebarItem from './sidebar/SidebarItem'
 import * as Styled from './styles/side-bar-styles'
+import { useGetAllSelectionQuery } from '../../redux/services/tracks'
 
 function SideBar() {
+  const { data } = useGetAllSelectionQuery()
   return (
     <Styled.SideBarWrapper>
       <Personal />
       <Styled.SideBarBlock>
         <Styled.SideBarList>
-          <SidebarItem
-            imgPath={require('./sidebar/img/playlist01.png')}
-            alt="day's playlist"
-            link="/playlist/1"
-          />
-          <SidebarItem
-            imgPath={require('./sidebar/img/playlist02.png')}
-            alt="day's playlist"
-            link="/playlist/2"
-          />
-          <SidebarItem
-            imgPath={require('./sidebar/img/playlist03.png')}
-            alt="day's playlist"
-            link="/playlist/3"
-          />
+          {data &&
+            data.map((selection) => (
+              <SidebarItem
+                imgPath={require(`./sidebar/img/playlist0${selection.id}.png`)}
+                alt={`day's playlist #${selection.id}`}
+                link={`/playlist/${selection.id}`}
+              />
+            ))}
         </Styled.SideBarList>
       </Styled.SideBarBlock>
     </Styled.SideBarWrapper>
