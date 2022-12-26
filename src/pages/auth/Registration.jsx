@@ -10,7 +10,7 @@ import Logo from '../../components/img/logo.png'
 import { registerUser } from '../../redux/slices/userActions'
 
 function Registration() {
-  const { loading, userInfo, error, success } = useSelector(
+  const { loading, userToken, error, success } = useSelector(
     (state) => state.user
   )
 
@@ -20,8 +20,8 @@ function Registration() {
 
   useEffect(() => {
     if (success) navigate('/login')
-    if (userInfo) navigate('/')
-  }, [navigate, userInfo, success])
+    if (userToken) navigate('/')
+  }, [navigate, userToken, success])
 
   const submitForm = (data) => {
     if (data.password !== data.confirmPassword) {

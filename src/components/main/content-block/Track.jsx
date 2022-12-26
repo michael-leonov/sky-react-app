@@ -6,14 +6,14 @@ import TrackAlbum from './track/TrackAlbum'
 import TrackTime from './track/TrackTime'
 import * as Styled from './styles/track-styles'
 
-function Track({ name, author, duration_in_seconds, album }) {
+function Track({ id, name, author, duration_in_seconds, album }) {
   return (
     <Styled.TrackItem>
       <Styled.TrackWrapper>
         <TrackTitle title={name} />
         <TrackAuthor author={author} />
         <TrackAlbum album={album} />
-        <TrackTime time={duration_in_seconds} />
+        <TrackTime time={duration_in_seconds} trackId={id} />
       </Styled.TrackWrapper>
     </Styled.TrackItem>
   )

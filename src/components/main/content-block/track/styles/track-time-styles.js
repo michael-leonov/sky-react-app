@@ -1,11 +1,11 @@
 import styled from 'styled-components'
 
-export const TrackTimeImg = styled.svg`
+export const TrackLikeImg = styled.svg`
   width: 14px;
   height: 12px;
   margin-right: 17px;
-  fill: transparent;
-  stroke: #696969;
+  fill: ${({ isLike }) => (isLike ? 'red' : 'transparent')};
+  stroke: ${({ isLike }) => (isLike ? 'red' : '#696969')}; ;
 `
 
 export const TrackTimeText = styled.span`
