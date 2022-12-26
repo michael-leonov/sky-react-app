@@ -11,9 +11,9 @@ export const trackApi = createApi({
       query: () => 'catalog/track/all/',
     }),
 
-    // getTrack: builder.query({
-    //   query: (trackId) => `catalog/track/${trackId}`,
-    // }),
+    getTrack: builder.query({
+      query: (trackId) => `catalog/track/${trackId}`,
+    }),
 
     addToFavorite: builder.mutation({
       query: (track) => ({
@@ -27,7 +27,6 @@ export const trackApi = createApi({
       query: (track) => ({
         url: `${baseUrl}catalog/track/${track.id}/favorite/`,
         method: 'DELETE',
-        body: track,
       }),
     }),
 
@@ -43,7 +42,7 @@ export const trackApi = createApi({
 
 export const {
   useGetAllTracksQuery,
-  // useGetTrackQuery,
+  useGetTrackQuery,
   useAddToFavoriteMutation,
   useDeleteFromFavoriteMutation,
   useGetAllSelectionQuery,

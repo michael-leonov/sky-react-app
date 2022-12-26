@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-expressions */
 import React, { useEffect, useRef, useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import BarElement from './BarElement'
 import TrackPlayContain from './track-play/TrackPlayContain'
 import sprite from '../img/sprite.svg'
@@ -8,6 +9,10 @@ import * as Styled from './styles/bar-styles'
 import sound from '../../assets/static/Bobby_Marleni_-_Dropin.mp3'
 
 function Bar() {
+  const { activeSong, currentSongs, currentIndex, isActive, isPlaying } =
+    useSelector((state) => state.player)
+  const dispatch = useDispatch()
+
   const audioRef = useRef(new Audio(sound))
   audioRef.current.preload = 'metadata'
 

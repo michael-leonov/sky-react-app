@@ -7,8 +7,10 @@ import TrackTime from './track/TrackTime'
 import * as Styled from './styles/track-styles'
 
 function Track({ id, name, author, duration_in_seconds, album }) {
+  const handlePlayTrack = () => {}
+
   return (
-    <Styled.TrackItem>
+    <Styled.TrackItem onClick={handlePlayTrack}>
       <Styled.TrackWrapper>
         <TrackTitle title={name} />
         <TrackAuthor author={author} />
