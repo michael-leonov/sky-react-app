@@ -4,24 +4,20 @@ import axios from 'axios'
 import baseUrl from '../../constants'
 
 export const registerUser = createAsyncThunk(
-  // action type string
   'user/register',
   async ({ username, email, password }, { rejectWithValue }) => {
     try {
-      // configure header's Content-Type as JSON
       const config = {
         headers: {
           'Content-Type': 'application/json',
         },
       }
-      // make request to backend
       await axios.post(
         `${baseUrl}user/signup/`,
         { username, email, password },
         config
       )
     } catch (error) {
-      // return custom error message from API if any
       if (error.response && error.response.data.message) {
         return rejectWithValue(error.response.data.message)
       }
@@ -32,9 +28,8 @@ export const registerUser = createAsyncThunk(
 
 export const userLogin = createAsyncThunk(
   'user/login',
-  async ({ username, password }, { rejectWithValue }) => {
+  async ({ email, password }, { rejectWithValue }) => {
     try {
-      // configure header's Content-Type as JSON
       const config = {
         headers: {
           'Content-Type': 'application/json',
@@ -42,14 +37,28 @@ export const userLogin = createAsyncThunk(
       }
       const { data } = await axios.post(
         `${baseUrl}user/login/`,
-        { username, password },
+        { email, password },
         config
       )
-      // store user's token in local storage
-      localStorage.setItem('userToken', data.userToken)
+
+      if (data) {
+        try {
+          const token = await axios.post(
+            `${baseUrl}user/token/`,
+            { email, password },
+            config
+          )
+          localStorage.setItem('userToken', token.data.access)
+          data.userToken = token.data.access
+        } catch (error) {
+          if (error.response && error.response.data.message) {
+            return rejectWithValue(error.response.data.message)
+          }
+          return rejectWithValue(error.message)
+        }
+      }
       return data
     } catch (error) {
-      // return custom error message from API if any
       if (error.response && error.response.data.message) {
         return rejectWithValue(error.response.data.message)
       }

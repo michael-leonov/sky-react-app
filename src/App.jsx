@@ -1,11 +1,12 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo, useEffect } from 'react'
 import { ThemeProvider } from 'styled-components'
+import { useDispatch, useSelector } from 'react-redux'
 import AppRoutes from './routes'
 import * as Styled from './styles'
 import { ThemeContext, themes } from './context/theme'
 
 function App() {
-  const [token, setToken] = useState()
+  const { userToken } = useSelector((state) => state.user)
   const [currentTheme, setCurrentTheme] = useState(themes.dark)
 
   const toggleTheme = () => {
@@ -25,8 +26,8 @@ function App() {
   return (
     <ThemeContext.Provider value={themeContextMemo}>
       <ThemeProvider theme={themeContextMemo}>
-        <Styled.GlobalStyle auth={!token} />
-        <AppRoutes auth={token} setToken={setToken} />
+        <Styled.GlobalStyle auth={!userToken} />
+        <AppRoutes token={userToken} />
       </ThemeProvider>
     </ThemeContext.Provider>
   )

@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 /* eslint-disable no-param-reassign */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useEffect } from 'react'
@@ -9,7 +10,9 @@ import Logo from '../../components/img/logo.png'
 import { registerUser } from '../../redux/slices/userActions'
 
 function Registration() {
-  const { loading, userInfo, success } = useSelector((state) => state.user)
+  const { loading, userInfo, error, success } = useSelector(
+    (state) => state.user
+  )
 
   const dispatch = useDispatch()
   const { register, handleSubmit } = useForm()
@@ -26,7 +29,7 @@ function Registration() {
       return
     }
 
-    // data.email = data.email.toLowerCase()
+    data.email = data.email.toLowerCase()
     dispatch(registerUser(data))
   }
 
@@ -35,11 +38,18 @@ function Registration() {
       <Link to="/">
         <img src={Logo} alt="Logo" />
       </Link>
+      {error && { error }}
       <form onSubmit={handleSubmit(submitForm)}>
         <Styled.InputAuth
           type="text"
           placeholder="Логин"
           {...register('username')}
+          required
+        />
+        <Styled.InputAuth
+          type="email"
+          placeholder="E-mail"
+          {...register('email')}
           required
         />
         <Styled.InputAuth

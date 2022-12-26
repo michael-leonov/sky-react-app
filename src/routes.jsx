@@ -9,22 +9,20 @@ import Playlist from './pages/selections'
 import ProtectedRoute from './components/protected-route/ProtectedRoute'
 import * as Styled from './styles'
 
-function AppRoutes({ auth, setToken }) {
+function AppRoutes({ token }) {
   return (
     <div>
       <Routes>
         <Route
           path="/login"
-          element={auth ? <Navigate to="/" /> : <Login setToken={setToken} />}
+          element={token ? <Navigate to="/" /> : <Login />}
         />
         <Route
           path="/registration"
-          element={
-            auth ? <Navigate to="/" /> : <Registration setToken={setToken} />
-          }
+          element={token ? <Navigate to="/" /> : <Registration />}
         />
 
-        <Route element={<ProtectedRoute isAllowed={auth} />}>
+        <Route element={<ProtectedRoute token={token} />}>
           <Route
             path="/"
             element={
