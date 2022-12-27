@@ -14,6 +14,7 @@ import { setCurrentSongs } from '../../redux/slices/playerSlice'
 function ContentBlock({ title = 'Треки', tracks, isLoading }) {
   const dispatch = useDispatch()
 
+  // Нужно для логики nextTrack и prevTrack
   useEffect(() => {
     dispatch(setCurrentSongs(tracks))
   }, [])
@@ -47,7 +48,9 @@ function ContentBlock({ title = 'Треки', tracks, isLoading }) {
         </Styled.ContentTitles>
         {isLoading ? (
           <Styled.SkeletonWrapper>
-            {Array.from({ length: 5 }).fill(<SkeletonTrack />)}
+            {Array.from({ length: 5 }, (v, k) => (
+              <SkeletonTrack key={k} />
+            ))}
           </Styled.SkeletonWrapper>
         ) : (
           <Styled.Playlist>

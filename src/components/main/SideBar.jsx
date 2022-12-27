@@ -16,6 +16,7 @@ function SideBar() {
           {data &&
             data.map((selection) => (
               <SidebarItem
+                key={selection.id}
                 imgPath={require(`./sidebar/img/playlist0${selection.id}.png`)}
                 alt={`day's playlist #${selection.id}`}
                 link={`/playlist/${selection.id}`}
