@@ -2,7 +2,7 @@ import React from 'react'
 import { Route, Routes, Navigate } from 'react-router-dom'
 import Login from './pages/auth/Login'
 import Registration from './pages/auth/Registration'
-import Main from './components/Main'
+import Home from './pages/home'
 import Favorites from './pages/favorites'
 import NotFound from './pages/not-found'
 import Playlist from './pages/selections'
@@ -21,7 +21,7 @@ function AppRoutes() {
             path="/"
             element={
               <Styled.Wrapper>
-                <Main />
+                <Home />
               </Styled.Wrapper>
             }
           />

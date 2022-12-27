@@ -6,20 +6,20 @@ import TrackPlayContain from './track-play/TrackPlayContain'
 import sprite from '../img/sprite.svg'
 import TrackPlayLike from './track-play/TrackPlayLike'
 import * as Styled from './styles/bar-styles'
-import sound from '../../assets/static/Bobby_Marleni_-_Dropin.mp3'
+import { playPause } from '../../redux/slices/playerSlice'
 
 function Bar() {
-  const { activeSong, currentSongs, currentIndex, isActive, isPlaying } =
-    useSelector((state) => state.player)
+  const { activeSong, isActive, isPlaying } = useSelector(
+    (state) => state.player
+  )
+  const [progressValue, setProgressValue] = useState(0)
+  const [volume, setVolume] = useState(0.3)
+  const [repeat, setRepeat] = useState(false)
+  const [shuffle, setShuffle] = useState(false)
   const dispatch = useDispatch()
 
-  const audioRef = useRef(new Audio(sound))
+  const audioRef = useRef(new Audio(activeSong.track_file))
   audioRef.current.preload = 'metadata'
-
-  const [playing, setPlaying] = useState(false)
-  const [progressValue, setProgressValue] = useState(0)
-
-  const togglePlay = () => setPlaying(!playing)
 
   const musicProgress = () => {
     const progress =
@@ -29,90 +29,122 @@ function Bar() {
   }
 
   useEffect(() => {
-    playing ? audioRef.current.play() : audioRef.current.pause()
+    isPlaying ? audioRef.current.play() : audioRef.current.pause()
     audioRef.current.addEventListener('timeupdate', musicProgress)
-  }, [playing])
+  }, [isPlaying])
 
   useEffect(() => {
-    audioRef.current.addEventListener('ended', () => setPlaying(false))
+    audioRef.current.addEventListener('ended', () => dispatch(playPause(false)))
     return () => {
-      audioRef.current.removeEventListener('ended', () => setPlaying(false))
+      audioRef.current.removeEventListener('ended', () =>
+        dispatch(playPause(false))
+      )
     }
   }, [])
 
-  return (
-    <Styled.BarWrapper>
-      <Styled.BarContent>
-        <Styled.ProgressBar value={progressValue} max="100" />
-        <Styled.BarPlayerBlock>
-          <Styled.BarPlayer>
-            <Styled.BarControls>
-              <BarElement
-                marginRight="23px"
-                widthSvg="15px"
-                heightSvg="14px"
-                el="prev"
-                alt="prev"
-              />
-              <BarElement
-                marginRight="23px"
-                widthSvg="22px"
-                heightSvg="20px"
-                fillSvg="#d9d9d9"
-                el="play"
-                alt="play"
-                onClick={togglePlay}
-              />
-              <div> {playing ? 'pause' : 'play'} </div>
+  useEffect(() => {
+    audioRef.current.volume = volume
+  }, [volume])
 
-              <BarElement
-                marginRight="28px"
-                fill="#a53939"
-                widthSvg="15px"
-                heightSvg="14px"
-                fillSvg="inherit"
-                strokeSvg="#d9d9d9"
-                el="next"
-                alt="next"
-              />
-              <BarElement
-                marginRight="24px"
-                widthSvg="18px"
-                heightSvg="12px"
-                fillSvg="transparent"
-                strokeSvg="#696969"
-                el="repeat"
-                alt="repeat"
-              />
-              <BarElement
-                el="shuffle"
-                widthSvg="19px"
-                heightSvg="12px"
-                fillSvg="transparent"
-                strokeSvg="#696969"
-                alt="shuffle"
-              />
-            </Styled.BarControls>
-            <Styled.TrackPlay>
-              <TrackPlayContain />
-              <TrackPlayLike />
-            </Styled.TrackPlay>
-          </Styled.BarPlayer>
-          <Styled.BarVolumeBlock>
-            <Styled.VolumeWrapper>
-              <Styled.VolumeImageWrapper>
-                <Styled.VolumeImage alt="volume">
-                  <use xlinkHref={`${sprite}#icon-dislike`} />
-                </Styled.VolumeImage>
-              </Styled.VolumeImageWrapper>
-              <Styled.VolumeProgressBar>
-                <Styled.VolumeProgressBarInput type="range" name="range" />
-              </Styled.VolumeProgressBar>
-            </Styled.VolumeWrapper>
-          </Styled.BarVolumeBlock>
-        </Styled.BarPlayerBlock>
-      </Styled.BarContent>
-    </Styled.BarWrapper>
+  useEffect(() => {
+    audioRef.current.loop = repeat
+  }, [repeat])
+
+  const handlePlayPause = () => {
+    if (!isActive) return
+
+    if (isPlaying) {
+      dispatch(playPause(false))
+    } else {
+      dispatch(playPause(true))
+    }
+  }
+
+  return (
+    activeSong?.id && (
+      <Styled.BarWrapper>
+        <Styled.BarContent>
+          <Styled.ProgressBar value={progressValue} max="100" />
+          <Styled.BarPlayerBlock>
+            <Styled.BarPlayer>
+              <Styled.BarControls>
+                <BarElement
+                  marginRight="23px"
+                  widthSvg="15px"
+                  heightSvg="14px"
+                  el="prev"
+                  alt="prev"
+                />
+                <BarElement
+                  marginRight="23px"
+                  widthSvg="22px"
+                  heightSvg="20px"
+                  fillSvg="#d9d9d9"
+                  el="play"
+                  alt="play"
+                  onClick={handlePlayPause}
+                />
+                <div> {isPlaying ? 'pause' : 'play'} </div>
+
+                <BarElement
+                  marginRight="28px"
+                  fill="#a53939"
+                  widthSvg="15px"
+                  heightSvg="14px"
+                  fillSvg="inherit"
+                  strokeSvg="#d9d9d9"
+                  el="next"
+                  alt="next"
+                />
+                <BarElement
+                  marginRight="24px"
+                  widthSvg="18px"
+                  heightSvg="12px"
+                  fillSvg="transparent"
+                  strokeSvg="#696969"
+                  el="repeat"
+                  alt="repeat"
+                  onClick={setRepeat(!repeat)}
+                />
+                <BarElement
+                  el="shuffle"
+                  widthSvg="19px"
+                  heightSvg="12px"
+                  fillSvg="transparent"
+                  strokeSvg="#696969"
+                  alt="shuffle"
+                  onClick={setShuffle(!shuffle)}
+                />
+              </Styled.BarControls>
+              <Styled.TrackPlay>
+                <TrackPlayContain />
+                <TrackPlayLike />
+              </Styled.TrackPlay>
+            </Styled.BarPlayer>
+            <Styled.BarVolumeBlock>
+              <Styled.VolumeWrapper>
+                <Styled.VolumeImageWrapper>
+                  <Styled.VolumeImage alt="volume">
+                    <use xlinkHref={`${sprite}#icon-dislike`} />
+                  </Styled.VolumeImage>
+                </Styled.VolumeImageWrapper>
+                <Styled.VolumeProgressBar>
+                  <Styled.VolumeProgressBarInput
+                    type="range"
+                    name="range"
+                    step="any"
+                    min="0"
+                    max="1"
+                    value={volume}
+                    onChange={(e) => setVolume(e.target.value)}
+                  />
+                </Styled.VolumeProgressBar>
+              </Styled.VolumeWrapper>
+            </Styled.BarVolumeBlock>
+          </Styled.BarPlayerBlock>
+        </Styled.BarContent>
+      </Styled.BarWrapper>
+    )
   )
 }
 

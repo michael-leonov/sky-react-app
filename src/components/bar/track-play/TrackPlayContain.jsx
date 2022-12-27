@@ -1,9 +1,12 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import TrackPlayElement from './TrackPlayElement'
 import sprite from '../../img/sprite.svg'
 import * as Styled from './styles/track-play-styles'
 
 function TrackPlayContain() {
+  const { activeSong } = useSelector((state) => state.player)
+
   return (
     <Styled.TrackPlayInfo>
       <TrackPlayElement
@@ -30,12 +33,12 @@ function TrackPlayContain() {
       <TrackPlayElement
         gridArea="author"
         minWidth="49px"
-        tag={<Styled.TagElementInfo>Bobby Marleni</Styled.TagElementInfo>}
+        tag={<Styled.TagElementInfo>{activeSong.author}</Styled.TagElementInfo>}
       />
       <TrackPlayElement
         gridArea="album"
         minWidth="49px"
-        tag={<Styled.TagElementInfo>Dropin</Styled.TagElementInfo>}
+        tag={<Styled.TagElementInfo>{activeSong.name}</Styled.TagElementInfo>}
       />
     </Styled.TrackPlayInfo>
   )
