@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import React from 'react'
-import * as Styled from '../../components/main-styles'
+import * as Styled from '../home/home-styles'
 import Nav from '../../components/main/Nav'
 import ContentBlock from '../../components/main/ContentBlock'
 import Bar from '../../components/bar/Bar'

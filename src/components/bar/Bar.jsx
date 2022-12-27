@@ -9,7 +9,7 @@ import * as Styled from './styles/bar-styles'
 import { playPause } from '../../redux/slices/playerSlice'
 
 function Bar() {
-  const { activeSong, isActive, isPlaying } = useSelector(
+  const { currentSongs, activeSong, isActive, isPlaying } = useSelector(
     (state) => state.player
   )
   const [progressValue, setProgressValue] = useState(0)
@@ -17,6 +17,10 @@ function Bar() {
   const [repeat, setRepeat] = useState(false)
   const [shuffle, setShuffle] = useState(false)
   const dispatch = useDispatch()
+
+  useEffect(() => {
+    if (currentSongs.length) dispatch(playPause(true))
+  }, [activeSong.id])
 
   const audioRef = useRef(new Audio(activeSong.track_file))
   audioRef.current.preload = 'metadata'
@@ -61,90 +65,88 @@ function Bar() {
   }
 
   return (
-    activeSong?.id && (
-      <Styled.BarWrapper>
-        <Styled.BarContent>
-          <Styled.ProgressBar value={progressValue} max="100" />
-          <Styled.BarPlayerBlock>
-            <Styled.BarPlayer>
-              <Styled.BarControls>
-                <BarElement
-                  marginRight="23px"
-                  widthSvg="15px"
-                  heightSvg="14px"
-                  el="prev"
-                  alt="prev"
-                />
-                <BarElement
-                  marginRight="23px"
-                  widthSvg="22px"
-                  heightSvg="20px"
-                  fillSvg="#d9d9d9"
-                  el="play"
-                  alt="play"
-                  onClick={handlePlayPause}
-                />
-                <div> {isPlaying ? 'pause' : 'play'} </div>
+    <Styled.BarWrapper>
+      <Styled.BarContent>
+        <Styled.ProgressBar value={progressValue} max="100" />
+        <Styled.BarPlayerBlock>
+          <Styled.BarPlayer>
+            <Styled.BarControls>
+              <BarElement
+                marginRight="23px"
+                widthSvg="15px"
+                heightSvg="14px"
+                el="prev"
+                alt="prev"
+              />
+              <BarElement
+                marginRight="23px"
+                widthSvg="22px"
+                heightSvg="20px"
+                fillSvg="#d9d9d9"
+                el="play"
+                alt="play"
+                onClick={handlePlayPause}
+              />
+              <div> {isPlaying ? 'pause' : 'play'} </div>
 
-                <BarElement
-                  marginRight="28px"
-                  fill="#a53939"
-                  widthSvg="15px"
-                  heightSvg="14px"
-                  fillSvg="inherit"
-                  strokeSvg="#d9d9d9"
-                  el="next"
-                  alt="next"
+              <BarElement
+                marginRight="28px"
+                fill="#a53939"
+                widthSvg="15px"
+                heightSvg="14px"
+                fillSvg="inherit"
+                strokeSvg="#d9d9d9"
+                el="next"
+                alt="next"
+              />
+              <BarElement
+                marginRight="24px"
+                widthSvg="18px"
+                heightSvg="12px"
+                fillSvg="transparent"
+                strokeSvg="#696969"
+                el="repeat"
+                alt="repeat"
+                // onClick={setRepeat(!repeat)}
+              />
+              <BarElement
+                el="shuffle"
+                widthSvg="19px"
+                heightSvg="12px"
+                fillSvg="transparent"
+                strokeSvg="#696969"
+                alt="shuffle"
+                // onClick={setShuffle(!shuffle)}
+              />
+            </Styled.BarControls>
+            <Styled.TrackPlay>
+              <TrackPlayContain />
+              <TrackPlayLike />
+            </Styled.TrackPlay>
+          </Styled.BarPlayer>
+          <Styled.BarVolumeBlock>
+            <Styled.VolumeWrapper>
+              <Styled.VolumeImageWrapper>
+                <Styled.VolumeImage alt="volume">
+                  <use xlinkHref={`${sprite}#icon-dislike`} />
+                </Styled.VolumeImage>
+              </Styled.VolumeImageWrapper>
+              <Styled.VolumeProgressBar>
+                <Styled.VolumeProgressBarInput
+                  type="range"
+                  name="range"
+                  step="any"
+                  min="0"
+                  max="1"
+                  value={volume}
+                  onChange={(e) => setVolume(e.target.value)}
                 />
-                <BarElement
-                  marginRight="24px"
-                  widthSvg="18px"
-                  heightSvg="12px"
-                  fillSvg="transparent"
-                  strokeSvg="#696969"
-                  el="repeat"
-                  alt="repeat"
-                  onClick={setRepeat(!repeat)}
-                />
-                <BarElement
-                  el="shuffle"
-                  widthSvg="19px"
-                  heightSvg="12px"
-                  fillSvg="transparent"
-                  strokeSvg="#696969"
-                  alt="shuffle"
-                  onClick={setShuffle(!shuffle)}
-                />
-              </Styled.BarControls>
-              <Styled.TrackPlay>
-                <TrackPlayContain />
-                <TrackPlayLike />
-              </Styled.TrackPlay>
-            </Styled.BarPlayer>
-            <Styled.BarVolumeBlock>
-              <Styled.VolumeWrapper>
-                <Styled.VolumeImageWrapper>
-                  <Styled.VolumeImage alt="volume">
-                    <use xlinkHref={`${sprite}#icon-dislike`} />
-                  </Styled.VolumeImage>
-                </Styled.VolumeImageWrapper>
-                <Styled.VolumeProgressBar>
-                  <Styled.VolumeProgressBarInput
-                    type="range"
-                    name="range"
-                    step="any"
-                    min="0"
-                    max="1"
-                    value={volume}
-                    onChange={(e) => setVolume(e.target.value)}
-                  />
-                </Styled.VolumeProgressBar>
-              </Styled.VolumeWrapper>
-            </Styled.BarVolumeBlock>
-          </Styled.BarPlayerBlock>
-        </Styled.BarContent>
-      </Styled.BarWrapper>
-    )
+              </Styled.VolumeProgressBar>
+            </Styled.VolumeWrapper>
+          </Styled.BarVolumeBlock>
+        </Styled.BarPlayerBlock>
+      </Styled.BarContent>
+    </Styled.BarWrapper>
   )
 }
 

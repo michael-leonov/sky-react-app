@@ -16,7 +16,7 @@ function ContentBlock({ title = 'Треки', tracks, isLoading }) {
 
   useEffect(() => {
     dispatch(setCurrentSongs(tracks))
-  }, [tracks])
+  }, [])
 
   return (
     <Styled.CenterBlock>
