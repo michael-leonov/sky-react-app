@@ -1,28 +1,32 @@
 /* eslint-disable no-unused-expressions */
 import React, { useEffect, useRef, useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import BarElement from './BarElement'
 import TrackPlayContain from './track-play/TrackPlayContain'
 import sprite from '../img/sprite.svg'
 import TrackPlayLike from './track-play/TrackPlayLike'
 import * as Styled from './styles/bar-styles'
-import { playPause } from '../../redux/slices/playerSlice'
 
 function Bar() {
-  const { currentSongs, activeSong, isActive, isPlaying } = useSelector(
+  const { currentSongs, activeSong, isActive } = useSelector(
     (state) => state.player
   )
+  const [isPlaying, setPlaying] = useState(false)
   const [progressValue, setProgressValue] = useState(0)
   const [volume, setVolume] = useState(0.3)
   const [repeat, setRepeat] = useState(false)
   const [shuffle, setShuffle] = useState(false)
-  const dispatch = useDispatch()
 
-  const audioRef = useRef(new Audio())
+  const audioRef = useRef(new Audio(activeSong.track_file))
   audioRef.current.preload = 'metadata'
 
   useEffect(() => {
-    audioRef.current.src = activeSong.track_file
+    setPlaying(true)
+    if (activeSong.track_file) {
+      audioRef.current.pause()
+      audioRef.current = new Audio(activeSong.track_file)
+      audioRef.current.play()
+    } else audioRef.current = new Audio(activeSong.track_file)
   }, [activeSong.track_file])
 
   const musicProgress = () => {
@@ -38,11 +42,9 @@ function Bar() {
   }, [isPlaying])
 
   useEffect(() => {
-    audioRef.current.addEventListener('ended', () => dispatch(playPause(false)))
+    audioRef.current.addEventListener('ended', () => setPlaying(false))
     return () => {
-      audioRef.current.removeEventListener('ended', () =>
-        dispatch(playPause(false))
-      )
+      audioRef.current.removeEventListener('ended', () => setPlaying(false))
     }
   }, [])
 
@@ -56,12 +58,7 @@ function Bar() {
 
   const handlePlayPause = () => {
     if (!isActive) return
-
-    if (isPlaying) {
-      dispatch(playPause(false))
-    } else {
-      dispatch(playPause(true))
-    }
+    setPlaying(!isPlaying)
   }
 
   return (
