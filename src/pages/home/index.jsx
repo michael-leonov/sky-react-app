@@ -2,7 +2,6 @@ import React from 'react'
 import Nav from '../../components/main/Nav'
 import ContentBlock from '../../components/main/ContentBlock'
 import SideBar from '../../components/main/SideBar'
-import Bar from '../../components/bar/Bar'
 import * as Styled from './home-styles'
 import { useThemeContext } from '../../context/theme'
 import { useGetAllTracksQuery } from '../../redux/services/tracks'
@@ -18,7 +17,6 @@ function Home() {
         <ContentBlock tracks={data} isLoading={isLoading} />
         <SideBar />
       </Styled.Main>
-      <Bar />
     </Styled.Container>
   )
 }

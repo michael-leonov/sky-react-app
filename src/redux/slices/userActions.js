@@ -71,7 +71,7 @@ export const userLogin = createAsyncThunk(
 
 export const checkUser = createAsyncThunk(
   'user/auth',
-  async ({ refresh }, { rejectWithValue }) => {
+  async (refresh, { rejectWithValue }) => {
     try {
       const config = {
         headers: {
@@ -83,7 +83,6 @@ export const checkUser = createAsyncThunk(
         { refresh },
         config
       )
-      console.log(token.data)
       localStorage.setItem('userToken', token.data.access)
 
       return token.data

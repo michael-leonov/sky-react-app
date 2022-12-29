@@ -5,6 +5,7 @@ import AppRoutes from './routes'
 import * as Styled from './styles'
 import { ThemeContext, themes } from './context/theme'
 import { checkUser } from './redux/slices/userActions'
+import Bar from './components/bar/Bar'
 
 function App() {
   const { userToken } = useSelector((state) => state.user)
@@ -35,6 +36,7 @@ function App() {
       <ThemeProvider theme={themeContextMemo}>
         <Styled.GlobalStyle auth={!userToken} />
         <AppRoutes />
+        <Bar />
       </ThemeProvider>
     </ThemeContext.Provider>
   )

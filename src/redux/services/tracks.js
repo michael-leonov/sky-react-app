@@ -30,6 +30,9 @@ export const trackApi = createApi({
       query: (track) => ({
         url: `${baseUrl}catalog/track/${track.id}/favorite/`,
         method: 'DELETE',
+        headers: {
+          authorization: `Bearer ${localStorage.getItem('userToken')}`,
+        },
       }),
     }),
 
