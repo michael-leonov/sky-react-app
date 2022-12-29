@@ -20,18 +20,20 @@ function TrackTime({ trackId, time }) {
   const [isLoading, setLoading] = useState(false) // Как дизейблить кнопку при срабатывании useAddToFavoriteMutation или useDeleteFromFavoriteMutation
   const [isLike, setLike] = useState(false)
 
-  const handleAddToFavorite = () => {
-    setLoading(!isLoading)
+  const handleAddToFavorite = (e) => {
+    e.stopPropagation()
+    setLoading(true)
     addToFavorite({ id: trackId })
     setLike(!isLike)
-    setLoading(!isLoading)
+    setLoading(false)
   }
 
-  const handleDeleteFromFavorite = () => {
-    setLoading(!isLoading)
+  const handleDeleteFromFavorite = (e) => {
+    e.stopPropagation()
+    setLoading(true)
     deleteFromFavorite({ id: trackId })
     setLike(!isLike)
-    setLoading(!isLoading)
+    setLoading(false)
   }
 
   return (

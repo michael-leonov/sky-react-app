@@ -6,6 +6,7 @@ export const trackApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl,
   }),
+
   endpoints: (builder) => ({
     getAllTracks: builder.query({
       query: () => 'catalog/track/all/',
@@ -19,7 +20,19 @@ export const trackApi = createApi({
       query: (track) => ({
         url: `${baseUrl}catalog/track/${track.id}/favorite/`,
         method: 'POST',
-        body: track,
+        prepareHeaders: (headers) => {
+          const token = localStorage.getItem('userToken')
+          console.log(token)
+
+          // If we have a token set in state, let's assume that we should be passing it.
+          if (token) {
+            headers.set('authorization', `Bearer ${token}`)
+          }
+
+          console.log(headers)
+
+          return headers
+        },
       }),
     }),
 
