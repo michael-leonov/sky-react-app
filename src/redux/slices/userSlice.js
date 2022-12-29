@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit'
-import { registerUser, userLogin } from './userActions'
+import { registerUser, userLogin, checkUser } from './userActions'
 
 const userToken = localStorage.getItem('userToken')
   ? localStorage.getItem('userToken')
@@ -41,6 +41,18 @@ const userSlice = createSlice({
       state.success = true
     },
     [registerUser.rejected]: (state, { payload }) => {
+      state.loading = false
+      state.error = payload
+    },
+    [checkUser.pending]: (state) => {
+      state.loading = true
+      state.error = null
+    },
+    [checkUser.fulfilled]: (state, { payload }) => {
+      state.loading = false
+      state.userToken = payload.access
+    },
+    [checkUser.rejected]: (state, { payload }) => {
       state.loading = false
       state.error = payload
     },

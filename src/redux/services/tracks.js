@@ -20,18 +20,8 @@ export const trackApi = createApi({
       query: (track) => ({
         url: `${baseUrl}catalog/track/${track.id}/favorite/`,
         method: 'POST',
-        prepareHeaders: (headers) => {
-          const token = localStorage.getItem('userToken')
-          console.log(token)
-
-          // If we have a token set in state, let's assume that we should be passing it.
-          if (token) {
-            headers.set('authorization', `Bearer ${token}`)
-          }
-
-          console.log(headers)
-
-          return headers
+        headers: {
+          authorization: `Bearer ${localStorage.getItem('userToken')}`,
         },
       }),
     }),

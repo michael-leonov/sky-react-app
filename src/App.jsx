@@ -1,13 +1,16 @@
 import React, { useState, useMemo, useEffect } from 'react'
 import { ThemeProvider } from 'styled-components'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import AppRoutes from './routes'
 import * as Styled from './styles'
 import { ThemeContext, themes } from './context/theme'
+import { checkUser } from './redux/slices/userActions'
 
 function App() {
   const { userToken } = useSelector((state) => state.user)
   const [currentTheme, setCurrentTheme] = useState(themes.dark)
+
+  const dispatch = useDispatch()
 
   const toggleTheme = () => {
     if (currentTheme === themes.dark) {
@@ -22,6 +25,10 @@ function App() {
     () => ({ themeContext: currentTheme, toggleTheme }),
     [currentTheme, toggleTheme]
   )
+
+  useEffect(() => {
+    dispatch(checkUser(localStorage.getItem('refreshToken')))
+  }, [])
 
   return (
     <ThemeContext.Provider value={themeContextMemo}>

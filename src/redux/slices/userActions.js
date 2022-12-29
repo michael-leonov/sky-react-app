@@ -49,6 +49,7 @@ export const userLogin = createAsyncThunk(
             config
           )
           localStorage.setItem('userToken', token.data.access)
+          localStorage.setItem('refreshToken', token.data.refresh)
           data.userToken = token.data.access
         } catch (error) {
           if (error.response && error.response.data.message) {
@@ -57,7 +58,35 @@ export const userLogin = createAsyncThunk(
           return rejectWithValue(error.message)
         }
       }
+
       return data
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message)
+      }
+      return rejectWithValue(error.message)
+    }
+  }
+)
+
+export const checkUser = createAsyncThunk(
+  'user/auth',
+  async ({ refresh }, { rejectWithValue }) => {
+    try {
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+      const token = await axios.post(
+        `${baseUrl}user/token/refresh/`,
+        { refresh },
+        config
+      )
+      console.log(token.data)
+      localStorage.setItem('userToken', token.data.access)
+
+      return token.data
     } catch (error) {
       if (error.response && error.response.data.message) {
         return rejectWithValue(error.response.data.message)
