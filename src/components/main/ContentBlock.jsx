@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
@@ -10,6 +11,7 @@ import SkeletonTrack from './content-block/SkeletonTrack'
 import * as Styled from './styles/content-block-styles'
 import { StyledTrackTimeIcon } from './content-block/styles/track-styles'
 import { setCurrentSongs } from '../../redux/slices/playerSlice'
+import Playlist from './content-block/Playlist'
 
 function ContentBlock({ title = 'Треки', tracks, isLoading }) {
   const dispatch = useDispatch()
@@ -47,17 +49,18 @@ function ContentBlock({ title = 'Треки', tracks, isLoading }) {
           />
         </Styled.ContentTitles>
         {isLoading ? (
-          <Styled.SkeletonWrapper>
-            {Array.from({ length: 5 }, (v, k) => (
-              <SkeletonTrack key={k} />
-            ))}
-          </Styled.SkeletonWrapper>
+          <>
+            {' Loading tracks...'}
+            <Styled.SkeletonWrapper>
+              {Array.from({ length: 5 }, (_v, k) => (
+                <SkeletonTrack key={k} />
+              ))}
+            </Styled.SkeletonWrapper>
+          </>
+        ) : tracks.length > 0 ? (
+          <Playlist tracks={tracks} />
         ) : (
-          <Styled.Playlist>
-            {tracks.map((track) => (
-              <Track key={track.id} {...track} />
-            ))}
-          </Styled.Playlist>
+          <>No published tracks</>
         )}
       </Styled.CenterBlockContent>
     </Styled.CenterBlock>

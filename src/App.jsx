@@ -28,7 +28,7 @@ function App() {
   )
 
   useEffect(() => {
-    dispatch(checkUser(localStorage.getItem('refreshToken')))
+    if (userToken) dispatch(checkUser(localStorage.getItem('refreshToken')))
   }, [])
 
   return (
