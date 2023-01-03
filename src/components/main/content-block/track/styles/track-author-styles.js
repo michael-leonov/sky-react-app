@@ -5,7 +5,7 @@ export const TrackAuthorWrapper = styled.div`
   display: flex;
   justify-content: flex-start;
 `
-export const TrackAuthorLink = styled.a`
+export const TrackAuthorLink = styled.p`
   font-style: normal;
   font-weight: 400;
   font-size: 16px;

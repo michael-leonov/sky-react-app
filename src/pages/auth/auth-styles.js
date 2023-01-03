@@ -19,6 +19,7 @@ export const EventBtn = styled.button`
   border: ${({ primary }) => (primary ? 'none' : '1px solid #D0CECE')};
 `
 export const InputAuth = styled.input`
+  width: 100%;
   color: black;
   border: none;
   border-bottom: 1px solid #d0cece;

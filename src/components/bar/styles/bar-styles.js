@@ -68,13 +68,12 @@ export const VolumeImage = styled.svg`
   height: 18px;
   fill: transparent;
 `
-export const VolumeProgressBar = styled.svg`
+export const VolumeProgressBar = styled.div`
   width: 109px;
   cursor: pointer;
 `
-export const VolumeProgressBarInput = styled.svg`
-  width: 109px;
-  cursor: pointer;
+export const VolumeProgressBarInput = styled.input`
+  width: 100%;
 `
 export const StyledBarBtn = styled.div`
   padding: 5px;

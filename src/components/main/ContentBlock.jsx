@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 import Search from './content-block/Search'
 import FilterTrack from './content-block/FilterTrack'
 import TracksTitle from './content-block/TracksTitle'
@@ -8,8 +9,16 @@ import watch from '../img/sprite.svg'
 import SkeletonTrack from './content-block/SkeletonTrack'
 import * as Styled from './styles/content-block-styles'
 import { StyledTrackTimeIcon } from './content-block/styles/track-styles'
+import { setCurrentSongs } from '../../redux/slices/playerSlice'
 
 function ContentBlock({ title = 'Треки', tracks, isLoading }) {
+  const dispatch = useDispatch()
+
+  // Нужно для логики nextTrack и prevTrack
+  useEffect(() => {
+    dispatch(setCurrentSongs(tracks))
+  }, [])
+
   return (
     <Styled.CenterBlock>
       <Search />
@@ -39,7 +48,9 @@ function ContentBlock({ title = 'Треки', tracks, isLoading }) {
         </Styled.ContentTitles>
         {isLoading ? (
           <Styled.SkeletonWrapper>
-            {Array.from({ length: 5 }).fill(<SkeletonTrack />)}
+            {Array.from({ length: 5 }, (v, k) => (
+              <SkeletonTrack key={k} />
+            ))}
           </Styled.SkeletonWrapper>
         ) : (
           <Styled.Playlist>

@@ -1,21 +1,24 @@
-/* eslint-disable no-console */
 import React from 'react'
-import * as Styled from '../home/home-styles'
 import Nav from '../../components/main/Nav'
 import ContentBlock from '../../components/main/ContentBlock'
+import SideBar from '../../components/main/SideBar'
+import * as Styled from './home-styles'
+import { useThemeContext } from '../../context/theme'
 import { useGetAllTracksQuery } from '../../redux/services/tracks'
 
-function Favorites() {
+function Home() {
   const { data, isLoading } = useGetAllTracksQuery()
+  const { theme } = useThemeContext()
 
   return (
-    <Styled.Container>
+    <Styled.Container theme={theme}>
       <Styled.Main>
         <Nav />
-        <ContentBlock title="Мои треки" tracks={data} isLoading={isLoading} />
+        <ContentBlock tracks={data} isLoading={isLoading} />
+        <SideBar />
       </Styled.Main>
     </Styled.Container>
   )
 }
 
-export default Favorites
+export default Home

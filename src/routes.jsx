@@ -2,34 +2,26 @@ import React from 'react'
 import { Route, Routes, Navigate } from 'react-router-dom'
 import Login from './pages/auth/Login'
 import Registration from './pages/auth/Registration'
-import Main from './components/Main'
+import Home from './pages/home'
 import Favorites from './pages/favorites'
 import NotFound from './pages/not-found'
 import Playlist from './pages/selections'
 import ProtectedRoute from './components/protected-route/ProtectedRoute'
 import * as Styled from './styles'
 
-function AppRoutes({ auth, setToken }) {
+function AppRoutes() {
   return (
     <div>
       <Routes>
-        <Route
-          path="/login"
-          element={auth ? <Navigate to="/" /> : <Login setToken={setToken} />}
-        />
-        <Route
-          path="/registration"
-          element={
-            auth ? <Navigate to="/" /> : <Registration setToken={setToken} />
-          }
-        />
+        <Route path="/login" element={<Login />} />
+        <Route path="/registration" element={<Registration />} />
 
-        <Route element={<ProtectedRoute isAllowed={auth} />}>
+        <Route element={<ProtectedRoute />}>
           <Route
             path="/"
             element={
               <Styled.Wrapper>
-                <Main />
+                <Home />
               </Styled.Wrapper>
             }
           />

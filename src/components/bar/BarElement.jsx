@@ -14,14 +14,13 @@ function BarElement({
   onClick,
 }) {
   return (
-    <StyledBarBtn marginRight={marginRight} fill={fill}>
+    <StyledBarBtn marginRight={marginRight} fill={fill} onClick={onClick}>
       <StyledBarBtnSvg
         width={widthSvg}
         height={heightSvg}
         fill={fillSvg}
         stroke={strokeSvg}
         alt={alt}
-        onClick={onClick}
       >
         <use xlinkHref={`${sprite}#icon-${el}`} />
       </StyledBarBtnSvg>
