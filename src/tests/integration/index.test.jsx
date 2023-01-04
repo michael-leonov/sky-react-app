@@ -34,8 +34,7 @@ describe('All Tracks test suite', () => {
 
     const tracksItmes = await screen.findAllByRole('track')
 
-    // Ждем ответа от сервера. Как только он придет,
-    // отрисуется пункт списка
+    // Ждем ответа от сервера.
     expect(tracksItmes).toHaveLength(2)
     expect(screen.queryByText(/loading/i)).not.toBeInTheDocument()
   })

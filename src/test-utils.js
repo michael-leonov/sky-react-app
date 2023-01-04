@@ -1,34 +1,13 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
-import React, { useState } from 'react'
+import React from 'react'
 import { render, cleanup } from '@testing-library/react'
 import { configureStore } from '@reduxjs/toolkit'
 import { Provider } from 'react-redux'
 import { setupListeners } from '@reduxjs/toolkit/query'
-import { ThemeProvider } from 'styled-components'
-import { ThemeContext, themes } from './context/theme'
+import { ThemeContextProvider } from './context/theme'
 
 function AllProviders({ children }) {
-  const [currentTheme, setCurrentTheme] = useState(themes.dark)
-
-  const toggleTheme = () => {
-    if (currentTheme === themes.dark) {
-      setCurrentTheme(themes.light)
-      return
-    }
-
-    setCurrentTheme(themes.dark)
-  }
-
-  const themeContextMemo = useMemo(
-    () => ({ themeContext: currentTheme, toggleTheme }),
-    [currentTheme, toggleTheme]
-  )
-
-  return (
-    <ThemeContext.Provider value={themeContextMemo}>
-      <ThemeProvider theme={themeContextMemo}>{children}</ThemeProvider>
-    </ThemeContext.Provider>
-  )
+  return <ThemeContextProvider>{children}</ThemeContextProvider>
 }
 
 /**
