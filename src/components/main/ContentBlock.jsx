@@ -1,15 +1,16 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import Search from './content-block/Search'
 import FilterTrack from './content-block/FilterTrack'
 import TracksTitle from './content-block/TracksTitle'
-import Track from './content-block/Track'
 import watch from '../img/sprite.svg'
 import SkeletonTrack from './content-block/SkeletonTrack'
 import * as Styled from './styles/content-block-styles'
 import { StyledTrackTimeIcon } from './content-block/styles/track-styles'
 import { setCurrentSongs } from '../../redux/slices/playerSlice'
+import Playlist from './content-block/Playlist'
 
 function ContentBlock({ title = 'Треки', tracks, isLoading }) {
   const dispatch = useDispatch()
@@ -47,17 +48,18 @@ function ContentBlock({ title = 'Треки', tracks, isLoading }) {
           />
         </Styled.ContentTitles>
         {isLoading ? (
-          <Styled.SkeletonWrapper>
-            {Array.from({ length: 5 }, (v, k) => (
-              <SkeletonTrack key={k} />
-            ))}
-          </Styled.SkeletonWrapper>
+          <>
+            {' Loading tracks...'}
+            <Styled.SkeletonWrapper>
+              {Array.from({ length: 5 }, (_v, k) => (
+                <SkeletonTrack key={k} />
+              ))}
+            </Styled.SkeletonWrapper>
+          </>
+        ) : tracks?.length ? (
+          <Playlist tracks={tracks} />
         ) : (
-          <Styled.Playlist>
-            {tracks.map((track) => (
-              <Track key={track.id} {...track} />
-            ))}
-          </Styled.Playlist>
+          <>No tracks published </>
         )}
       </Styled.CenterBlockContent>
     </Styled.CenterBlock>
