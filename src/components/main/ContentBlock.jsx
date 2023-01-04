@@ -5,7 +5,6 @@ import { useDispatch } from 'react-redux'
 import Search from './content-block/Search'
 import FilterTrack from './content-block/FilterTrack'
 import TracksTitle from './content-block/TracksTitle'
-import Track from './content-block/Track'
 import watch from '../img/sprite.svg'
 import SkeletonTrack from './content-block/SkeletonTrack'
 import * as Styled from './styles/content-block-styles'
@@ -57,10 +56,10 @@ function ContentBlock({ title = 'Треки', tracks, isLoading }) {
               ))}
             </Styled.SkeletonWrapper>
           </>
-        ) : tracks.length > 0 ? (
+        ) : tracks?.length ? (
           <Playlist tracks={tracks} />
         ) : (
-          <>No published tracks</>
+          <>No tracks published </>
         )}
       </Styled.CenterBlockContent>
     </Styled.CenterBlock>
